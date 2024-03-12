@@ -1,13 +1,22 @@
 'use client';
 import { Sidebar } from "flowbite-react";
+import { useEffect, useState } from "react";
+import CheckIcon from '@mui/icons-material/Check';
 
 export default function CustomSidebar() {
+
+    const [introductionCompleteState, setIntroductionCompleteState] = useState(false)
+
+    useEffect( () => {
+        setIntroductionCompleteState(localStorage.getItem("introduction") == 'true' || false)
+
+    }, [])
     return (
         <Sidebar className="h-full min-h-full w-auto">
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#">
-                Introduction
+                Introduction { introductionCompleteState ? <CheckIcon className="mb-1" /> : ""}
               </Sidebar.Item>
               <Sidebar.Collapse href="#" label="Package Management">
                 <Sidebar.Item href="#">
