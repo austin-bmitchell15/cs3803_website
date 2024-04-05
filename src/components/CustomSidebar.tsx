@@ -1,7 +1,23 @@
 'use client';
-import { Sidebar } from "flowbite-react";
+import { CustomFlowbiteTheme, Sidebar, Checkbox, Label } from "flowbite-react";
 import { useEffect, useState } from "react";
 import CheckIcon from '@mui/icons-material/Check';
+
+
+const tableOfContents = {
+  "modules": [
+    {
+      "title": "Introduction and Packages",
+      "submodules": [
+        {
+          "name": "Introduction",
+          "path": "/introduction/introduction"
+        },
+      ]
+    }
+  ]
+}
+
 
 export default function CustomSidebar() {
 
@@ -11,6 +27,7 @@ export default function CustomSidebar() {
         setIntroductionCompleteState(localStorage.getItem("introduction") == 'true' || false)
 
     }, [])
+
     return (
         <Sidebar className="h-full min-h-full w-auto">
             
@@ -20,6 +37,24 @@ export default function CustomSidebar() {
             <Sidebar.Item className="mb-4">
               TABLE OF CONTENTS
             </Sidebar.Item>
+            </Sidebar.ItemGroup>
+
+            {/* Introduction */}
+            <Sidebar.ItemGroup>
+              <Sidebar.Item className="mb-3">
+                Introduction and Packages
+              </Sidebar.Item>
+              <Sidebar.Item href="#">
+                    <Checkbox checked disabled className="mr-2"  id="introduction" /> 
+                    <Label htmlFor="introduction">Introduction</Label>
+              </Sidebar.Item>
+              <Sidebar.Item href="#">
+                    <Checkbox disabled className="mr-2"  id="installation" /> 
+                    <Label htmlFor="installation">Installation and Package Management</Label>
+              </Sidebar.Item>
+
+            </Sidebar.ItemGroup>
+            <Sidebar.ItemGroup>
               <Sidebar.Item href="#">
                 Introduction { introductionCompleteState ? <CheckIcon className="mb-1" /> : ""}
               </Sidebar.Item>
