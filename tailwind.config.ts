@@ -15,6 +15,13 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    colors: {
+      'darkpurple': "#1D1B20",
+      'lightpurple': "#D0BCFF",
+      'intermediatepurple': "#4A4458",
+      'graybg': "#727272",
+      'white': "#FFFFFF"
+    }
   },
   plugins: [
     require("flowbite/plugin")
