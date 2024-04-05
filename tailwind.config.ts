@@ -20,7 +20,8 @@ const config: Config = {
       'lightpurple': "#D0BCFF",
       'intermediatepurple': "#4A4458",
       'graybg': "#727272",
-      'white': "#FFFFFF"
+      'white': "#FFFFFF",
+      'purpletext': "#E8DEF8"
     }
   },
   plugins: [
