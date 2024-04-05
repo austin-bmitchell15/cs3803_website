@@ -13,8 +13,13 @@ export default function CustomSidebar() {
     }, [])
     return (
         <Sidebar className="h-full min-h-full w-auto">
+            
           <Sidebar.Items>
+          
             <Sidebar.ItemGroup>
+            <Sidebar.Item className="mb-4">
+              TABLE OF CONTENTS
+            </Sidebar.Item>
               <Sidebar.Item href="#">
                 Introduction { introductionCompleteState ? <CheckIcon className="mb-1" /> : ""}
               </Sidebar.Item>
