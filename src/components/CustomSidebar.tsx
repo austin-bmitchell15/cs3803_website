@@ -1,7 +1,6 @@
 'use client';
-import { CustomFlowbiteTheme, Sidebar, Checkbox, Label } from "flowbite-react";
+import { Sidebar, Checkbox, Label } from "flowbite-react";
 import { useEffect, useState } from "react";
-import CheckIcon from '@mui/icons-material/Check';
 import { loadModuleStatus, Module, Submodule } from "@/services/ModuleStatusStorage";
 
 
