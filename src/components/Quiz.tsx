@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { QnAType, QuizType } from '@/services/QuizTypes'
 import { Badge, Button, Card, Modal } from "flowbite-react";
+import { usePathname, useRouter } from 'next/navigation'
 
 const REQUIRED_SCORE: number = 0.8
 
@@ -10,6 +11,7 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
   const [checkedMode, setCheckedMode] = useState<boolean>(false)
   const [showModal, setShowModal] = useState<boolean>(false);
   const [questionAnsweredCorrect, setQuestionAnsweredCorrect] = useState(Array.from({length: quiz.length}, () => false))
+  const router = useRouter()
 
   const updateIndex = (i: number, newValue: boolean) => {
     const newArray = questionAnsweredCorrect.slice();
@@ -23,6 +25,15 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
       setShowModal(true)
     }
   }, [checkedMode])
+
+  const path = usePathname()
+
+  const retakeQuiz  = () => {
+    setShowModal(false)
+    console.log(path)
+    // router.refresh()
+    window.location.reload()
+  }
 
   return (
     <div>
@@ -59,7 +70,7 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="light" onClick={() => setShowModal(false)}>Try Again</Button>
+          <Button color="light" onClick={retakeQuiz}>Try Again</Button>
           
           {questionAnsweredCorrect.filter(Boolean).length / questionAnsweredCorrect.length  > REQUIRED_SCORE ? 
             <Button color="success" onClick={() => setShowModal(false)}>
