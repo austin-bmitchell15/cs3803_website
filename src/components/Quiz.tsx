@@ -28,6 +28,7 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
 
 function Question({ question, checkedMode }: { question: QnAType, checkedMode: boolean }) {
   const [selectedOption, setSelectedOption] = useState<number>(-1)
+
   return (
     <Card className="max-w-sm max-h-sm max-h-90 overflow-auto p-4">
       {checkedMode && question.answerOption != selectedOption && 
@@ -42,6 +43,10 @@ function Question({ question, checkedMode }: { question: QnAType, checkedMode: b
       <pre className="font-normal bg-gray-500 text-white-700 pb-5 pl-4 dark:text-gray-400">
         {question.codeSnippet}
       </pre>
+
+      {(question.explanation && checkedMode) && 
+        <p className={"text-gray-700"}><p className="font-bold">Explanation: </p>{question.explanation}</p>
+      }
 
 
       <div>
