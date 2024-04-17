@@ -21,7 +21,10 @@ export default function RootLayout({
         <div className="min-h-full flex flex-nowrap">
           <CustomSidebar/>
         </div>
-        {children}
+        <div>
+
+          {children} 
+        </div>
       </body>
     </html>
   );
