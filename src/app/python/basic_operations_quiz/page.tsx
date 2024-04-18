@@ -1,10 +1,8 @@
 "use client"
 
-import React, { useState } from 'react'
-import QuizComponent from '@/components/Quiz'
+import React from 'react'
 import { QuizType } from '@/services/QuizTypes'
 import Quiz from '@/components/Quiz'
-import { Button } from 'flowbite-react'
 
 const string1 = `
 words = 'Hello World'
