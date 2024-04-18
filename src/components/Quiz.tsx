@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { QnAType, QuizType } from '@/services/QuizTypes'
-import { Badge, Button, Card, Modal } from "flowbite-react";
+import { Badge, Button, Card, Label, ListGroup, Modal, Radio } from "flowbite-react";
 import { usePathname, useRouter } from 'next/navigation'
 
 const REQUIRED_SCORE: number = 0.8
@@ -10,13 +10,13 @@ const REQUIRED_SCORE: number = 0.8
 export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
   const [checkedMode, setCheckedMode] = useState<boolean>(false)
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [questionAnsweredCorrect, setQuestionAnsweredCorrect] = useState(Array.from({length: quiz.length}, () => false))
-  const router = useRouter()
+  const [selectedOption, setSelectedOption] = useState(Array.from({length: quiz.length}, () => -1))
+  const [viewedQuestionIndex, setViewedQuestionIndex] = useState(0)
 
-  const updateIndex = (i: number, newValue: boolean) => {
-    const newArray = questionAnsweredCorrect.slice();
+  const updateIndex = (i: number, newValue: number) => {
+    const newArray = selectedOption.slice();
     newArray[i] = newValue;
-    setQuestionAnsweredCorrect(newArray);
+    setSelectedOption(newArray);
   };
   
   useEffect(() => {
@@ -26,53 +26,74 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
     }
   }, [checkedMode])
 
-  const path = usePathname()
-
   const retakeQuiz  = () => {
     setShowModal(false)
-    console.log(path)
     // router.refresh()
     window.location.reload()
   }
 
   return (
     <div>
-      <Button className="mt-5" color="warning" onClick={() => setCheckedMode(true)}>Check Answers</Button>
-      <div className="w-full">
-        <div className="flex flex-wrap">
-          {quiz.map((q, i) => (
-            <div className="my-5 ml-4">
-              <Question question={q} key={'question_' + i} checkedMode={checkedMode} markCorrectness={(correctnessStatus) => updateIndex(i, correctnessStatus)} />
-            </div>
-          ))}
+    <div className="flex mt-7 w-full">
+    <div className="w-1/3">
+      <ListGroup className="w-60">
+        {quiz.map((q, i) => {
+          return (
+          <ListGroup.Item className={checkedMode ? (selectedOption[i] == q.answerOption ? "text-green-700": "text-red-500") : ""} key={i} onClick={() => setViewedQuestionIndex(i)}>Question {i}</ListGroup.Item>)
+        })}
+      </ListGroup>
+      {checkedMode ? 
+      <Button className="mt-4" color="warning" onClick={retakeQuiz}>Redo</Button>
+      :
+      <Button className="mt-4" color="warning" onClick={() => setCheckedMode(true)}>Submit Quiz</Button>
+      }
+    </div>
+    <div className="w-2/3 ml-10">
+      {!checkedMode 
+        ? <QuestionView question={quiz[viewedQuestionIndex]} selectOption={(option:number) => updateIndex(viewedQuestionIndex, option)} selectedOption={selectedOption[viewedQuestionIndex]}/>
+        : <SubmittedQuestionView question={quiz[viewedQuestionIndex]} selectedAnswer={selectedOption[viewedQuestionIndex]} />
+      }
+    </div>
+    </div>
+    <div>
+      {showModal && <ModalComponent setShowModal={setShowModal} optionsAnswered={selectedOption} correctAnswers={quiz.map(q => q.answerOption)} /> }
+    </div>
+  </div>
+  )
+}
 
-        </div>
+function ModalComponent({setShowModal, optionsAnswered, correctAnswers} : {setShowModal: any, optionsAnswered: number[], correctAnswers: number[]}) {
+  
+  var n_correct = 0;
 
-      </div>
+  for (var i = 0; i < optionsAnswered.length; i++) {
+    if (optionsAnswered[i] == correctAnswers[i])
+      n_correct += 1
+  }
 
-      <Modal show={showModal} onClose={() => setShowModal(false)}>
-        {/* <Modal.Header>Your Score: {questionAnsweredCorrect.filter(Boolean).length} / {questionAnsweredCorrect.length}</Modal.Header> */}
+  const passed = n_correct / correctAnswers.length > REQUIRED_SCORE
+
+
+  const retakeQuiz  = () => {
+    setShowModal(false)
+    // router.refresh()
+    window.location.reload()
+  }
+
+
+  return (
+    <Modal show={true} onClose={() => setShowModal(false)}>
         <Modal.Header>Results</Modal.Header>
         <Modal.Body>
-          {/* <div className="space-y-6">
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
-              companies around the world are updating their terms of service agreements to comply.
-            </p>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant
-              to ensure a common set of data rights in the European Union. It requires organizations to notify users as
-              soon as possible of high-risk data breaches that could personally affect them.
-            </p>
-          </div> */}
+          
           <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-          Your Score: {questionAnsweredCorrect.filter(a => a == true).length} / {questionAnsweredCorrect.length}
+          Your Score: {n_correct} / {correctAnswers.length}
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="light" onClick={retakeQuiz}>Try Again</Button>
+          <Button color={passed ? "light" : "failure"} onClick={retakeQuiz}>Try Again</Button>
           
-          {questionAnsweredCorrect.filter(Boolean).length / questionAnsweredCorrect.length  > REQUIRED_SCORE ? 
+          {passed ? 
             <Button color="success" onClick={() => setShowModal(false)}>
               Next Lesson
             </Button>
@@ -83,24 +104,16 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
           }
         </Modal.Footer>
       </Modal>
-  </div>
   )
 }
 
-function Question({ question, checkedMode, markCorrectness }: { question: QnAType, checkedMode: boolean, markCorrectness: any }) {
-  const [selectedOption, setSelectedOption] = useState<number>(-1)
-
-  useEffect(() => {
-    markCorrectness(selectedOption == question.answerOption)
-  }, [selectedOption])
+function QuestionView({question, selectOption, selectedOption}:{question: QnAType, selectOption: any, selectedOption: number}) {
+  const handleRadioChange = (event) => {
+    selectOption(event.target.value)
+  }
 
   return (
-    <Card className="max-w-sm max-h-sm max-h-90 overflow-auto p-4">
-      {checkedMode && question.answerOption != selectedOption && 
-        <div className="flex flex-wrap gap-2">
-          <Badge color="failure">Incorrect</Badge>
-        </div>
-      }
+    <Card className="max-w-5xl max-h-sm max-h-90 overflow-auto p-4">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {question.question} 
       </h5>
@@ -109,20 +122,61 @@ function Question({ question, checkedMode, markCorrectness }: { question: QnATyp
         {question.codeSnippet}
       </pre>
 
-      {(question.explanation && checkedMode) && 
-        <p className={"text-gray-700"}><p className="font-bold">Explanation: </p>{question.explanation}</p>
-      }
-
 
       <div>
+      <fieldset className="flex max-w-md flex-col gap-4">
+        {/* <legend className="mb-4">Choose your favorite country</legend> */}
         {question.options.map((opt, i) => (
-          <Button key={question + "_" + i} className="my-1" size="lg" color={
-            (checkedMode ? (i == question.answerOption ? "success" : (i == selectedOption ? "failure" : "light") ) : (i == selectedOption ? "blue":  "light"))
-            // (selectedOption == i ? (checkedMode ? (selectedOption == question.answerOption ? "green" : "red") : "blue"): (i == question.answerOption "green" : ?"gray") )
-          } onClick={() => setSelectedOption(i)}>{opt}</Button>
+          <div className="flex items-center gap-2">
+            <Radio id={opt} key={i} name={question.question} value={i} checked={selectedOption == i} onChange={handleRadioChange}/>
+            <Label htmlFor={opt}>{opt}</Label>
+          </div>
         ))}
+        
+      </fieldset>
+        
       </div>
     </Card>
   )
+}
 
+function SubmittedQuestionView({question, selectedAnswer} : {question: QnAType, selectedAnswer: number}) {
+  var textColors = Array.from({length: question.options.length}, () => "text-gray-700")
+  for (var i = 0; i < question.options.length; i++) {
+    if (i == question.answerOption) {
+      textColors[i] = "text-green-700"
+    } else if (selectedAnswer == i) {
+      textColors[i] = "text-red-700"
+    } 
+  }
+
+  return (
+      <Card className="max-w-5xl max-h-sm max-h-90 overflow-auto p-4">
+        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {question.question} 
+        </h5>
+  
+        <pre className="font-normal bg-gray-500 text-white-700 pb-5 pl-4 dark:text-gray-400">
+          {question.codeSnippet}
+        </pre>
+  
+        <p className="px-2 text-gray-600">
+        {question.explanation}
+        </p>
+        <div>
+        <fieldset className="flex max-w-md flex-col gap-4">
+          {/* <legend className="mb-4">Choose your favorite country</legend> */}
+          {question.options.map((opt, i) => (
+            <div className="flex items-center gap-2">
+              <Radio id={opt} key={i} name={question.question} value={i} checked={selectedAnswer == i} disabled/>
+              {/* {checkedMode ? ((i == question.answerOption) ? <p>Hwllo</p> : <p>Clapped</p>) : <p>COnfused</p>} */}
+              <Label className={textColors[i]} htmlFor={opt}>{opt}</Label>
+            </div>
+          ))}
+          
+        </fieldset>
+          
+        </div>
+      </Card>
+  )
 }

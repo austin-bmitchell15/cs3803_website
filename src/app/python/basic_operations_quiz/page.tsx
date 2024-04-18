@@ -18,26 +18,25 @@ const quiz: QuizType = [
         codeSnippet: string1,
         options: ["SyntaxError", "11", "Infinite Loop", "2"],
         answerOption: 1,
-        explanation: "This is an explanation"
+        explanation: `The “range(10)” function returns a sequence of numbers, starting from 0, and increments by 1 (by default), and stops before the specified number. This for loop will loop through this sequence, set “num” to the current number of the loop, and print it out to the console. `
     },
     {
         question:  "How many times will this loop run?",
         codeSnippet: string1,
         options: ["SyntaxError", "11", "Infinite Loop", "2"],
         answerOption: 1,
-        explanation: "This is an explanation"
+        explanation: `The “range(10)” function returns a sequence of numbers, starting from 0, and increments by 1 (by default), and stops before the specified number. This for loop will loop through this sequence, set “num” to the current number of the loop, and print it out to the console. `
     },
     {
         question:  "How many times loop run?",
         codeSnippet: string1,
         options: ["SyntaxError", "11", "Infinite Loop", "2"],
         answerOption: 1,
-        explanation: "This is an explanation"
+        explanation: `The “range(10)” function returns a sequence of numbers, starting from 0, and increments by 1 (by default), and stops before the specified number. This for loop will loop through this sequence, set “num” to the current number of the loop, and print it out to the console. `
     }
 ]
 
 export default function BasicOperationsQuiz() {
-  const[checkMode, setCheckMode] = useState(false);
 
   return (
     <div className="ml-5 mt-5">
