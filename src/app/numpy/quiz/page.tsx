@@ -34,7 +34,7 @@ const quiz: QuizType = [
 ]
 
 export default function NumpyQuiz() {
-
+  
   return (
     <div className="ml-5 mt-5">
         <h1 className="text-5xl">Numpy Quiz</h1> 
