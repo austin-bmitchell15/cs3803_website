@@ -1,13 +1,29 @@
-import React from 'react'
+"use client"
 
-export default function VideoComponent({ videoUrl, description, transcript }: { videoUrl: string, description: string, transcript: string | undefined }) {
+import React from 'react'
+import { saveSubmoduleStatus } from '@/services/ModuleStatusStorage';
+import YouTube from 'react-youtube';
+
+const opts = {
+    width: "840",
+    height: "473"
+}
+
+export default function VideoComponent({ videoId, description, transcript, moduleId }: { videoId: string, description: string, transcript: string | undefined, moduleId: string }) {
+    function endVideo() {
+        saveSubmoduleStatus(moduleId)
+    }
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="flex flex-col items-center">
                 {/* <!-- Children elements --> */}
                 <p className="text-xl mt-10 mb-4">{description}</p>
-                <iframe width="840" height="473" src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-
+                <YouTube 
+                    videoId={videoId}
+                    onEnd={endVideo}
+                    opts={opts}
+                />
+                
                 {transcript && (
                     <div className='mb-4'>
                     <p className="text-2xl my-4">Transcript</p> 
