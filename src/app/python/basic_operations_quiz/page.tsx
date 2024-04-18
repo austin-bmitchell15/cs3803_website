@@ -42,7 +42,7 @@ export default function BasicOperationsQuiz() {
     <div className="ml-5 mt-5">
         <h1 className="text-5xl">Basic Operation Quiz</h1> 
         
-        <Quiz quiz={quiz}/>
+        <Quiz quiz={quiz} moduleId='python_quiz'/>
     </div>
   )
 }

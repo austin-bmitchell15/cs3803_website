@@ -2,13 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 import { QnAType, QuizType } from '@/services/QuizTypes'
-import { Badge, Button, Card, Label, ListGroup, Modal, Radio } from "flowbite-react";
-import { usePathname, useRouter } from 'next/navigation'
+import { Button, Card, Label, ListGroup, Modal, Radio } from "flowbite-react";
 import { saveSubmoduleStatus } from '@/services/ModuleStatusStorage';
 
 const REQUIRED_SCORE: number = 0.8
 
-export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
+export default function QuizComponent({ quiz, moduleId }: { quiz: QuizType, moduleId: string}) {
   const [checkedMode, setCheckedMode] = useState<boolean>(false)
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState(Array.from({length: quiz.length}, () => -1))
@@ -57,13 +56,17 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
     </div>
     </div>
     <div>
-      {showModal && <ModalComponent setShowModal={setShowModal} optionsAnswered={selectedOption} correctAnswers={quiz.map(q => q.answerOption)} /> }
+      {showModal && <ModalComponent 
+                      setShowModal={setShowModal} 
+                      optionsAnswered={selectedOption} 
+                      correctAnswers={quiz.map(q => q.answerOption)} 
+                      moduleId={moduleId}/> }
     </div>
   </div>
   )
 }
 
-function ModalComponent({setShowModal, optionsAnswered, correctAnswers} : {setShowModal: any, optionsAnswered: number[], correctAnswers: number[]}) {
+function ModalComponent({setShowModal, optionsAnswered, correctAnswers, moduleId} : {setShowModal: any, optionsAnswered: number[], correctAnswers: number[], moduleId: string}) {
   
   var n_correct = 0;
 
@@ -75,7 +78,7 @@ function ModalComponent({setShowModal, optionsAnswered, correctAnswers} : {setSh
   const passed = n_correct / correctAnswers.length > REQUIRED_SCORE
 
   if (passed) {
-    saveSubmoduleStatus("python_quiz")
+    saveSubmoduleStatus(moduleId)
   }
   const retakeQuiz  = () => {
     setShowModal(false)
@@ -111,7 +114,7 @@ function ModalComponent({setShowModal, optionsAnswered, correctAnswers} : {setSh
 }
 
 function QuestionView({question, selectOption, selectedOption}:{question: QnAType, selectOption: any, selectedOption: number}) {
-  const handleRadioChange = (event) => {
+  const handleRadioChange = (event: { target: { value: any; }; }) => {
     selectOption(event.target.value)
   }
 
