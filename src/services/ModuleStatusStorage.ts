@@ -124,7 +124,13 @@ const tableOfContents = [
                 "id": "python_functions",
                 "path": "/python/functions",
                 "checked": false
-            }
+            },
+            {
+                "name": "General Python Operation Quiz",
+                "id": "python_quiz",
+                "path": "/python/basic_operations_quiz",
+                "checked": false
+            },
         ]
     },
     {
