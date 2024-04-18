@@ -28,7 +28,7 @@ export default function VideoComponent({ videoId, description, transcript, modul
                     <div className='mb-4'>
                     <p className="text-2xl my-4">Transcript</p> 
                     <div className="flex justify-center max-w-4xl">
-                    <div className="bg-black rounded-lg p-8 text-white text-center">
+                    <div className="bg-black rounded-lg p-8 text-white text-center overflow-y-auto max-h-80">
                         <div className='whitespace-pre-wrap text-left'>{transcript}</div>
                     </div>
                     </div>
