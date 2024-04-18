@@ -48,7 +48,7 @@ export default function QuizComponent({ quiz, moduleId }: { quiz: QuizType, modu
       <Button className="mt-4" color="warning" onClick={() => setCheckedMode(true)}>Submit Quiz</Button>
       }
     </div>
-    <div className="w-2/3 ml-10">
+    <div className="w-2/3 ml-10 mr-5">
       {!checkedMode 
         ? <QuestionView question={quiz[viewedQuestionIndex]} selectOption={(option:number) => updateIndex(viewedQuestionIndex, option)} selectedOption={selectedOption[viewedQuestionIndex]}/>
         : <SubmittedQuestionView question={quiz[viewedQuestionIndex]} selectedAnswer={selectedOption[viewedQuestionIndex]} />
@@ -124,9 +124,9 @@ function QuestionView({question, selectOption, selectedOption}:{question: QnATyp
         {question.question} 
       </h5>
 
-      <pre className="font-normal bg-gray-500 text-white-700 pb-5 pl-4 dark:text-gray-400">
+      { question.codeSnippet && <pre className="font-normal bg-gray-500 text-white-700 pb-5 pl-4 dark:text-gray-400">
         {question.codeSnippet}
-      </pre>
+      </pre> }
 
 
       <div>
@@ -162,9 +162,9 @@ function SubmittedQuestionView({question, selectedAnswer} : {question: QnAType, 
           {question.question} 
         </h5>
   
-        <pre className="font-normal bg-gray-500 text-white-700 pb-5 pl-4 dark:text-gray-400">
+        { question.codeSnippet && <pre className="font-normal bg-gray-500 text-white-700 pb-5 pl-4 dark:text-gray-400">
           {question.codeSnippet}
-        </pre>
+        </pre> }
   
         <p className="px-2 text-gray-600">
         {question.explanation}
