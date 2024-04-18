@@ -1,7 +1,7 @@
 
 export interface QnAType {
     question: string,
-    codeSnippet: string | undefined,
+    codeSnippet?: string,
     options: string[],
     answerOption: number,
     explanation: string
