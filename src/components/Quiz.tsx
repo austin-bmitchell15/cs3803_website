@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { QnAType, QuizType } from '@/services/QuizTypes'
 import { Badge, Button, Card, Label, ListGroup, Modal, Radio } from "flowbite-react";
 import { usePathname, useRouter } from 'next/navigation'
+import { saveSubmoduleStatus } from '@/services/ModuleStatusStorage';
 
 const REQUIRED_SCORE: number = 0.8
 
@@ -39,7 +40,7 @@ export default function QuizComponent({ quiz }: { quiz: QuizType, }) {
       <ListGroup className="w-60">
         {quiz.map((q, i) => {
           return (
-          <ListGroup.Item className={checkedMode ? (selectedOption[i] == q.answerOption ? "text-green-700": "text-red-500") : ""} key={i} onClick={() => setViewedQuestionIndex(i)}>Question {i}</ListGroup.Item>)
+          <ListGroup.Item className={checkedMode ? (selectedOption[i] == q.answerOption ? "text-green-700": "text-red-500") : ""} active={i == viewedQuestionIndex} key={i} onClick={() => setViewedQuestionIndex(i)}>Question {i}</ListGroup.Item>)
         })}
       </ListGroup>
       {checkedMode ? 
@@ -73,7 +74,9 @@ function ModalComponent({setShowModal, optionsAnswered, correctAnswers} : {setSh
 
   const passed = n_correct / correctAnswers.length > REQUIRED_SCORE
 
-
+  if (passed) {
+    saveSubmoduleStatus("python_quiz")
+  }
   const retakeQuiz  = () => {
     setShowModal(false)
     // router.refresh()
@@ -149,7 +152,7 @@ function SubmittedQuestionView({question, selectedAnswer} : {question: QnAType, 
       textColors[i] = "text-red-700"
     } 
   }
-
+  
   return (
       <Card className="max-w-5xl max-h-sm max-h-90 overflow-auto p-4">
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
