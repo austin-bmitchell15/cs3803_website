@@ -18,10 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={inter.className + " h-full flex"}>
-        <div className="min-h-full flex flex-nowrap">
+        <div className="h-screen fixed top-0 left-0">
           <CustomSidebar/>
         </div>
-        {children}
+        <div className="w-full ml-96">
+
+          {children} 
+        </div>
       </body>
     </html>
   );
