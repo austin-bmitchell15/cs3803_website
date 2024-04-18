@@ -159,6 +159,12 @@ const tableOfContents = [
                 "id": "numpy_other",
                 "path": "/numpy/other",
                 "checked": false
+            },
+            {
+                "name": "Numpy Quiz",
+                "id": "numpy_quiz",
+                "path": "/numpy/quiz",
+                "checked": false
             }
         ]
     },
@@ -193,6 +199,12 @@ const tableOfContents = [
                 "name": "Saving Data",
                 "id": "pandas_saving",
                 "path": "/pandas/saving",
+                "checked": false
+            },
+            {
+                "name": "Pandas Quiz",
+                "id": "pandas_quiz",
+                "path": "/pandas/quiz",
                 "checked": false
             }
         ]
@@ -234,6 +246,12 @@ const tableOfContents = [
                 "name": "Bar Graph",
                 "id": "graphing_bar",
                 "path": "/graphing/bar",
+                "checked": false
+            },
+            {
+                "name": "Graphing Quiz",
+                "id": "graphing_quiz",
+                "path": "/graphing/quiz",
                 "checked": false
             }
         ]
