@@ -3,12 +3,7 @@
 import React from 'react'
 import { QuizType } from '@/services/QuizTypes'
 import Quiz from '@/components/Quiz'
-
-const string1 = `
-words = 'Hello World'
-for letter in words:
-    print(letter)
-`
+import {generateRandomNumbers} from "@/services/Random"
 
 const quiz: QuizType = [
     {
@@ -94,12 +89,14 @@ const quiz: QuizType = [
 ]
 
 export default function PandasQuiz() {
+  let indices: number[] = generateRandomNumbers(quiz.length, 3)
+  const filteredQuiz = quiz.filter((_, i) => indices.includes(i))
 
   return (
     <div className="ml-5 mt-5">
         <h1 className="text-5xl">Pandas Quiz</h1> 
         
-        <Quiz quiz={quiz} moduleId='pandas_quiz'/>
+        <Quiz quiz={filteredQuiz} moduleId='pandas_quiz'/>
     </div>
   )
 }
