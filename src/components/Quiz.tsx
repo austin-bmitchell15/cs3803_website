@@ -3,7 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import { QnAType, QuizType } from '@/services/QuizTypes'
 import { Button, Card, Label, ListGroup, Modal, Radio } from "flowbite-react";
-import { saveSubmoduleStatus } from '@/services/ModuleStatusStorage';
+import { Module, loadModuleStatus, saveSubmoduleStatus } from '@/services/ModuleStatusStorage';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const REQUIRED_SCORE: number = 0.8
 
@@ -75,6 +77,9 @@ function ModalComponent({setShowModal, optionsAnswered, correctAnswers, moduleId
       n_correct += 1
   }
 
+  const router = useRouter()
+  const pathname = usePathname()
+
   const passed = n_correct / correctAnswers.length > REQUIRED_SCORE
 
   if (passed) {
@@ -85,6 +90,29 @@ function ModalComponent({setShowModal, optionsAnswered, correctAnswers, moduleId
     // router.refresh()
     window.location.reload()
   }
+
+  const [nextPath, setNextPath] = useState<string>("")
+  const [prevPath, setPrevPath] = useState<string>("")
+
+  useEffect( () => {
+    const tableOfContents: Module[] | null = loadModuleStatus()
+    if (tableOfContents != null) {
+        var submodulePaths = []
+        for (var i = 0; i < tableOfContents.length; i++) {
+            for (var j = 0; j < tableOfContents[i].submodules.length; j++) {
+                submodulePaths.push(
+                    tableOfContents[i].submodules[j].path
+                )
+            }
+        }
+
+        let currIndex: number = submodulePaths.indexOf(pathname)
+        setNextPath(submodulePaths[currIndex  + 1])
+        setPrevPath(submodulePaths[currIndex  - 1])
+    }
+    
+    
+}, [])
 
 
   return (
@@ -100,11 +128,11 @@ function ModalComponent({setShowModal, optionsAnswered, correctAnswers, moduleId
           <Button color={passed ? "light" : "failure"} onClick={retakeQuiz}>Try Again</Button>
           
           {passed ? 
-            <Button color="success" onClick={() => setShowModal(false)}>
+            <Button color="success" onClick={() => router.push(nextPath)}>
               Next Lesson
             </Button>
             :
-            <Button color="gray" onClick={() => setShowModal(false)}>
+            <Button color="gray" onClick={() => router.push(prevPath)}>
               Back To Lesson
             </Button>
           }

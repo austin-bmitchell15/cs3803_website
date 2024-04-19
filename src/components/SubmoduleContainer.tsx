@@ -26,14 +26,14 @@ function SubmoduleContainer( props: { children: any; } ) {
                     submodulePaths.push(
                         tableOfContents[i].submodules[j].path
                     )
-                    submoduleTitleList.push(
+                    submoduleTitles.push(
                         tableOfContents[i].submodules[j].name
                     )
                 }
             }
 
             setSubmodulePathOrdering(submodulePaths)
-            setSubmoduleTitleList(submoduleTitleList)
+            setSubmoduleTitleList(submoduleTitles)
 
             setCurrentModuleIndex(
                 submodulePaths.indexOf(pathname)

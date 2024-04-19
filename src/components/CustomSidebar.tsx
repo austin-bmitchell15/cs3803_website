@@ -1,7 +1,7 @@
 'use client';
 import { Sidebar, Checkbox, Label } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { loadModuleStatus, Module, Submodule } from "@/services/ModuleStatusStorage";
+import { loadModuleStatus, Module, Submodule, tableOfContentsInit } from "@/services/ModuleStatusStorage";
 import { usePathname } from 'next/navigation'
 
 
@@ -9,7 +9,7 @@ export default function CustomSidebar() {
 
     const [introductionCompleteState, setIntroductionCompleteState] = useState(false)
 
-    const [tableOfContents, setTableOfContents] = useState<Module[]>()
+    const [tableOfContents, setTableOfContents] = useState<Module[]>(tableOfContentsInit)
 
     const currentPath = usePathname()
 

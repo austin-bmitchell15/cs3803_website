@@ -14,7 +14,7 @@ const MODULE_KEY: string = 'modules';
 
 export function loadModuleStatus() : Module[] | null {
     if (localStorage.getItem(MODULE_KEY) == null) {
-        localStorage.setItem(MODULE_KEY, JSON.stringify(tableOfContents))
+        localStorage.setItem(MODULE_KEY, JSON.stringify(tableOfContentsInit))
     }
 
     const savedModules:string | null = localStorage.getItem(MODULE_KEY)
@@ -51,7 +51,7 @@ export function saveSubmoduleStatus(id: string) {
     localStorage.setItem(MODULE_KEY, JSON.stringify(tableOfContents))
 }
 
-const tableOfContents = [
+export const tableOfContentsInit = [
     {
         "title": "Introduction and Packages",
         "submodules": [
