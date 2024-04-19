@@ -42,9 +42,9 @@ export default function CustomSidebar() {
                   </Sidebar.Item>
                   {module.submodules.map(submodule => {
                     return (
-                      <Sidebar.Item href={submodule.path} key={submodule.id}  active={submodule.path == currentPath} >
+                      <Sidebar.Item href={submodule.path} key={submodule.id}  active={submodule.path == currentPath} className="text-sm font-medium text-gray-900 dark:text-white">
                         <Checkbox checked={submodule.checked} disabled className="mr-2"  id={submodule.id}/> 
-                        <Label htmlFor={submodule.id}>{submodule.name}</Label>
+                        {submodule.name}
                       </Sidebar.Item>
                     )
                   })}
