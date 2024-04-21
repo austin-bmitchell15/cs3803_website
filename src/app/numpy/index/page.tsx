@@ -1,7 +1,7 @@
 import VideoComponent from "@/components/Video";
 
 const videoId: string = "GbAXZmn56So"
-const description: string = "Overview of NumPy and what its used for."
+const description: string = "Indexing and accessing elements in Numpy array's."
 const transcript: string = `Welcome back to our lesson on Numpy.  
 
 Last time, we showed you how to install Numpy, and how to create a simple 1 Dimensional array. However, in Numpy, you can also create 2 dimensional arrays, and even 3 dimensional arrays. We will only go over 2 dimensional arrays and below, but feel free to look at Numpy’s official documentation for more information on 3D arrays.  
