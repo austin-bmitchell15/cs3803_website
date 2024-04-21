@@ -172,39 +172,27 @@ export const tableOfContentsInit = [
         "title": "Pandas",
         "submodules": [
             {
-                "name": "Purpose",
-                "id": "pandas_purpose",
-                "path": "/pandas/purpose",
+                "name": "Overview",
+                "id": "pandas_overview",
+                "path": "/pandas/overview",
                 "checked": false
             },
             {
-                "name": "Loading Data",
-                "id": "pandas_loading",
-                "path": "/pandas/loading",
+                "name": "Installation and Data Import",
+                "id": "pandas_import",
+                "path": "/pandas/import",
                 "checked": false
             },
             {
-                "name": "Understanding Tabular Structure",
-                "id": "pandas_tabular",
-                "path": "/pandas/tabular",
+                "name": "Data Frame",
+                "id": "pandas_dataframe",
+                "path": "/pandas/dataframe",
                 "checked": false
             },
             {
-                "name": "Columnar Operations",
-                "id": "numpy_columnar",
-                "path": "/pandas/columnar",
-                "checked": false
-            },
-            {
-                "name": "Saving Data",
-                "id": "pandas_saving",
-                "path": "/pandas/saving",
-                "checked": false
-            },
-            {
-                "name": "Pandas Quiz",
-                "id": "pandas_quiz",
-                "path": "/pandas/quiz",
+                "name": "Pivot Tables",
+                "id": "pandas_pivottables",
+                "path": "/pandas/pivottables",
                 "checked": false
             }
         ]
