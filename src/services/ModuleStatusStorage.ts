@@ -101,6 +101,18 @@ export const tableOfContentsInit = [
                 "id": "numpy_function",
                 "path": "/numpy/function",
                 "checked": false
+            },
+            {
+                "name": "Table of Common Numpy Functions",
+                "id": "numpy_table",
+                "path": "/numpy/table",
+                "checked": false 
+            },
+            {
+                "name": "Numpy Quiz",
+                "id": "numpy_quiz",
+                "path": "/numpy/quiz",
+                "checked": false
             }
         ]
     },
