@@ -12,6 +12,8 @@ export default function CodeLesson({snippet} : CodeLessonProps) {
     }
 
     return (
-        <CodeComponent code={snippet.pythonCode} packages={packages}/>
+        <div className='flex flex-row'>
+            <CodeComponent code={snippet.pythonTemplate} packages={packages}/>
+        </div>
     )
 }

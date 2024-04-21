@@ -1,4 +1,6 @@
 export interface Snippet {
     prompt: string
-    pythonCode: string
+    pythonTemplate: string
+    pythonExampleCode: string | undefined
+    expectedOutput: string | undefined
 }

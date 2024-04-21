@@ -6,7 +6,8 @@ import { loadModuleStatus, Module } from '@/services/ModuleStatusStorage';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
-function SubmoduleContainer( props: { children: any; } ) {
+
+export default function SubmoduleContainer( props: { children: any; } ) {
     const { children} = props
 
     // const [tableOfContents, setTableOfContents] = useState<Module[]>([])
@@ -63,5 +64,3 @@ function SubmoduleContainer( props: { children: any; } ) {
     </div>
     );
 };
-
-export default SubmoduleContainer;

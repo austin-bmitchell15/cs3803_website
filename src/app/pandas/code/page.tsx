@@ -9,7 +9,7 @@ export default function NumpyCode() {
     const snippet = PandaSnippets
 
     return (
-        <SubmoduleContainer title='Basic Operation Quiz' onNextClick={() => console.log('next')} onPrevClick={() => console.log('prev')}>
+        <SubmoduleContainer>
             <CodeLesson snippet={snippet}/>
         </SubmoduleContainer>
     )
