@@ -130,6 +130,12 @@ export const tableOfContentsInit = [
                 "id": "pandas_pivottables",
                 "path": "/pandas/pivottables",
                 "checked": false
+            },
+            {
+                "name": "Pandas Quiz",
+                "id": "pandas_quiz",
+                "path": "/pandas/quiz",
+                checked: false
             }
         ]
     },
