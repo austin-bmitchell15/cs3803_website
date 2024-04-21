@@ -99,71 +99,36 @@ export const tableOfContentsInit = [
         ]
     },
     {
-        "title": "General Python",
+        "title": "Numpy",
         "submodules": [
             {
-                "name": "Variables and Lists",
-                "id": "python_variables",
-                "path": "/python/variables",
+                "name": "Overview",
+                "id": "numpy_overview",
+                "path": "/numpy/overview",
                 "checked": false
             },
             {
-                "name": "Loops",
-                "id": "python_loops",
-                "path": "/python/loops",
+                "name": "Installation and Array Creation",
+                "id": "numpy_array",
+                "path": "/numpy/array",
                 "checked": false
             },
             {
-                "name": "Dictionaries",
-                "id": "python_dictionaries",
-                "path": "/python/dictionaries",
+                "name": "Array Indexing",
+                "id": "numpy_indexing",
+                "path": "/numpy/index",
+                "checked": false
+            },
+            {
+                "name": "Array Shapes",
+                "id": "numpy_shape",
+                "path": "/numpy/shape",
                 "checked": false
             },
             {
                 "name": "Functions",
-                "id": "python_functions",
-                "path": "/python/functions",
-                "checked": false
-            },
-            {
-                "name": "General Python Operation Quiz",
-                "id": "python_quiz",
-                "path": "/python/basic_operations_quiz",
-                "checked": false
-            },
-        ]
-    },
-    {
-        "title": "Numpy",
-        "submodules": [
-            {
-                "name": "Purpose",
-                "id": "numpy_purpose",
-                "path": "/numpy/purpose",
-                "checked": false
-            },
-            {
-                "name": "Linear Algebra Operations",
-                "id": "numpy_linear",
-                "path": "/numpy/linear",
-                "checked": false
-            },
-            {
-                "name": "Min, Max, Argmin, Argmax",
-                "id": "numpy_min",
-                "path": "/numpy/min",
-                "checked": false
-            },
-            {
-                "name": "Other Common Operations",
-                "id": "numpy_other",
-                "path": "/numpy/other",
-                "checked": false
-            },
-            {
-                "name": "Numpy Quiz",
-                "id": "numpy_quiz",
-                "path": "/numpy/quiz",
+                "id": "numpy_function",
+                "path": "/numpy/function",
                 "checked": false
             }
         ]
@@ -213,15 +178,33 @@ export const tableOfContentsInit = [
                 "checked": false
             },
             {
+                "name": "Line Graph: Demo",
+                "id": "graphing_linegraphsdemo",
+                "path": "/graphing/linegraphdemo",
+                "checked": false
+            },
+            {
                 "name": "Histogram",
                 "id": "graphing_histogram",
                 "path": "/graphing/histogram",
                 "checked": false
             },
             {
+                "name": "Histogram: Demo",
+                "id": "graphing_histogramdemo",
+                "path": "/graphing/histogramdemo",
+                "checked": false
+            },
+            {
                 "name": "Scatter Plot",
                 "id": "graphing_scatter",
                 "path": "/graphing/scatter",
+                "checked": false
+            },
+            {
+                "name": "Scatter Plot: Demo",
+                "id": "graphing_scatterdemo",
+                "path": "/graphing/scatterdemo",
                 "checked": false
             },
             
