@@ -73,33 +73,33 @@ export const tableOfContentsInit = [
         "title": "Numpy",
         "submodules": [
             {
-                "name": "Purpose",
-                "id": "numpy_purpose",
-                "path": "/numpy/purpose",
+                "name": "Overview",
+                "id": "numpy_overview",
+                "path": "/numpy/overview",
                 "checked": false
             },
             {
-                "name": "Linear Algebra Operations",
-                "id": "numpy_linear",
-                "path": "/numpy/linear",
+                "name": "Installation and Array Creation",
+                "id": "numpy_array",
+                "path": "/numpy/array",
                 "checked": false
             },
             {
-                "name": "Min, Max, Argmin, Argmax",
-                "id": "numpy_min",
-                "path": "/numpy/min",
+                "name": "Array Indexing",
+                "id": "numpy_indexing",
+                "path": "/numpy/index",
                 "checked": false
             },
             {
-                "name": "Other Common Operations",
-                "id": "numpy_other",
-                "path": "/numpy/other",
+                "name": "Array Shapes",
+                "id": "numpy_shape",
+                "path": "/numpy/shape",
                 "checked": false
             },
             {
-                "name": "Numpy Quiz",
-                "id": "numpy_quiz",
-                "path": "/numpy/quiz",
+                "name": "Functions",
+                "id": "numpy_function",
+                "path": "/numpy/function",
                 "checked": false
             }
         ]
@@ -155,15 +155,33 @@ export const tableOfContentsInit = [
                 "checked": false
             },
             {
+                "name": "Line Graph: Demo",
+                "id": "graphing_linegraphsdemo",
+                "path": "/graphing/linegraphdemo",
+                "checked": false
+            },
+            {
                 "name": "Histogram",
                 "id": "graphing_histogram",
                 "path": "/graphing/histogram",
                 "checked": false
             },
             {
+                "name": "Histogram: Demo",
+                "id": "graphing_histogramdemo",
+                "path": "/graphing/histogramdemo",
+                "checked": false
+            },
+            {
                 "name": "Scatter Plot",
                 "id": "graphing_scatter",
                 "path": "/graphing/scatter",
+                "checked": false
+            },
+            {
+                "name": "Scatter Plot: Demo",
+                "id": "graphing_scatterdemo",
+                "path": "/graphing/scatterdemo",
                 "checked": false
             },
             
