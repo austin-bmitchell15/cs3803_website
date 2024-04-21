@@ -20,11 +20,11 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={inter.className + " h-full flex"}>
         <div className="h-screen fixed top-0 left-0">
-          <CustomSidebar/>
+          <CustomSidebar />
         </div>
-        <div className="w-full ml-96">
+        <div className="w-full ml-96 my-5 mr-5">
           <SubmoduleContainer>
-            {children} 
+            {children}
           </SubmoduleContainer>
         </div>
       </body>
