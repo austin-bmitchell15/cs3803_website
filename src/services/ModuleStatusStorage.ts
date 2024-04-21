@@ -132,6 +132,12 @@ export const tableOfContentsInit = [
                 "checked": false
             },
             {
+                "name": "Table of Pandas Functions",
+                "id": "pandas_table",
+                "path": "/pandas/table",
+                checked: false
+            },
+            {
                 "name": "Pandas Quiz",
                 "id": "pandas_quiz",
                 "path": "/pandas/quiz",
