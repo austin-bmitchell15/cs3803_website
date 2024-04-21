@@ -9,8 +9,8 @@ export default function NumpyCode() {
     const snippet = PandaSnippets
 
     return (
-        <SubmoduleContainer>
+        
             <CodeLesson snippet={snippet}/>
-        </SubmoduleContainer>
+        
     )
 }
