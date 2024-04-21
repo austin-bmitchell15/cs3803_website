@@ -101,6 +101,18 @@ export const tableOfContentsInit = [
                 "id": "numpy_function",
                 "path": "/numpy/function",
                 "checked": false
+            },
+            {
+                "name": "Table of Common Numpy Functions",
+                "id": "numpy_table",
+                "path": "/numpy/table",
+                "checked": false 
+            },
+            {
+                "name": "Numpy Quiz",
+                "id": "numpy_quiz",
+                "path": "/numpy/quiz",
+                "checked": false
             }
         ]
     },
@@ -197,27 +209,9 @@ export const tableOfContentsInit = [
         "title": "Practical",
         "submodules": [
             {
-                "name": "Data Collection",
-                "id": "practical_collection",
-                "path": "/practical/collection",
-                "checked": false
-            },
-            {
-                "name": "Cleaning Data",
-                "id": "practical_cleaning",
-                "path": "/practical/cleaning",
-                "checked": false
-            },
-            {
-                "name": "Data Analysis Demo - Outliers",
-                "id": "practical_outliers",
-                "path": "/practical/outliers",
-                "checked": false
-            },
-            {
-                "name": "Visualizations",
-                "id": "practical_visualizations",
-                "path": "/practical/visualizations",
+                "name": "Demo: Regression",
+                "id": "practical_regression",
+                "path": "/practical/regression",
                 "checked": false
             }
         ]
