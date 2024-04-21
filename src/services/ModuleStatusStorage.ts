@@ -201,27 +201,15 @@ export const tableOfContentsInit = [
         "title": "Graphing",
         "submodules": [
             {
-                "name": "Overview of Matplotlib",
+                "name": "Overview",
                 "id": "graphing_overview",
                 "path": "/graphing/overview",
                 "checked": false
             },
             {
-                "name": "Scatter Plot",
-                "id": "graphing_scatter",
-                "path": "/graphing/scatter",
-                "checked": false
-            },
-            {
-                "name": "3D Scatter Plot",
-                "id": "graphing_3d",
-                "path": "/graphing/3d",
-                "checked": false
-            },
-            {
-                "name": "Line Graph",
-                "id": "graphing_linegraph",
-                "path": "/graphing/line",
+                "name": "Line Graphs",
+                "id": "graphing_linegraphs",
+                "path": "/graphing/linegraphs",
                 "checked": false
             },
             {
@@ -231,17 +219,12 @@ export const tableOfContentsInit = [
                 "checked": false
             },
             {
-                "name": "Bar Graph",
-                "id": "graphing_bar",
-                "path": "/graphing/bar",
+                "name": "Scatter Plot",
+                "id": "graphing_scatter",
+                "path": "/graphing/scatter",
                 "checked": false
             },
-            {
-                "name": "Graphing Quiz",
-                "id": "graphing_quiz",
-                "path": "/graphing/quiz",
-                "checked": false
-            }
+            
         ]
     },
     {
