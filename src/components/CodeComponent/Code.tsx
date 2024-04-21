@@ -29,11 +29,12 @@ const editorOnLoad = (editor : any) => {
 
 interface CodeEditorProps {
   code: string
+  data: string
   packages?: Packages
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-  const { code, packages } = props
+  const { code, packages, data } = props
   const [input, setInput] = useState(code.trimEnd())
   const [showOutput, setShowOutput] = useState(false)
 
@@ -52,8 +53,14 @@ export default function CodeEditor(props: CodeEditorProps) {
     interruptExecution,
     isAwaitingInput,
     sendInput,
-    prompt
+    prompt,
+    writeFile,
   } = usePython({ packages })
+
+  if (data) {
+    console.log(data)
+    writeFile('AAPL.csv', data)
+  }
 
   function run() {
     runPython(input)
