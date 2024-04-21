@@ -70,35 +70,6 @@ export const tableOfContentsInit = [
         ]
     },
     {
-        "title": "Jupyter Notebook",
-        "submodules": [
-            {
-                "name": "Purpose",
-                "id": "jupyter_purpose",
-                "path": "/jupyter/purpose",
-                "checked": false
-            },
-            {
-                "name": "Running Jupyter",
-                "id": "jupyter_running",
-                "path": "/jupyter/running",
-                "checked": false
-            },
-            {
-                "name": "Tour of the Interface",
-                "id": "jupyter_tour",
-                "path": "/jupyter/tour",
-                "checked": false
-            },
-            {
-                "name": "Common Pitfalls",
-                "id": "jupyter_pitfalls",
-                "path": "/jupyter/pitfalls",
-                "checked": false
-            }
-        ]
-    },
-    {
         "title": "Numpy",
         "submodules": [
             {
@@ -159,6 +130,12 @@ export const tableOfContentsInit = [
                 "id": "pandas_pivottables",
                 "path": "/pandas/pivottables",
                 "checked": false
+            },
+            {
+                "name": "Pandas Quiz",
+                "id": "pandas_quiz",
+                "path": "/pandas/quiz",
+                checked: false
             }
         ]
     },

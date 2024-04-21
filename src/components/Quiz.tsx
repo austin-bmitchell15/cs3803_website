@@ -6,6 +6,8 @@ import { Button, Card, Label, ListGroup, Modal, Radio } from "flowbite-react";
 import { Module, loadModuleStatus, saveSubmoduleStatus } from '@/services/ModuleStatusStorage';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import { CopyBlock, paraisoLight } from 'react-code-blocks';
+
 
 const REQUIRED_SCORE: number = 0.8
 
@@ -152,9 +154,9 @@ function QuestionView({question, selectOption, selectedOption}:{question: QnATyp
         {question.question} 
       </h5>
 
-      { question.codeSnippet && <pre className="font-normal bg-gray-500 text-white-700 pb-5 pl-4 dark:text-gray-400">
-        {question.codeSnippet}
-      </pre> }
+      { question.codeSnippet && 
+        <CopyBlock text={question.codeSnippet} language='python' theme={paraisoLight}/>
+      }
 
 
       <div>
