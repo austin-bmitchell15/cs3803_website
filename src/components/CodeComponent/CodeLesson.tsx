@@ -21,11 +21,7 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
     official: ["numpy", "pandas", "matplotlib"],
   };
 
-  if (snippet.expectedOutput && stdout === snippet.expectedOutput) {
-    saveSubmoduleStatus(moduleId);
-  } else if(snippet.imageOutput && numberOfRuns > 0) {
-    saveSubmoduleStatus(moduleId);
-  }
+  
 
   return (
     <div className="flex justify-center h-full">
@@ -62,9 +58,12 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
           packages={packages}
           data={AAPLData}
           imageOutput={snippet.imageOutput}
+          numberOfRuns={numberOfRuns}
           setNumberOfRuns={setNumberOfRuns}
           setStdout={setStdout}
           setStderr={setStderr}
+          expectedOutput={snippet.expectedOutput}
+          moduleId={moduleId}
         />
       </div>
     </div>
