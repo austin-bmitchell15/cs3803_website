@@ -15,9 +15,6 @@ const moduleId: string = "graphing_overview";
 export default function GraphingOverview() {
   return (
     <div className="ml-5 mt-5 w-full">
-      <div className="mb-10">
-        <h1 className="text-5xl">Graphing: Overview</h1>
-      </div>
       <div className="flex justify-center w-full overflow-y-auto">
         <VideoComponent
           videoId={videoId}
