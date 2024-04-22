@@ -13,6 +13,7 @@ export type Module = {
 const MODULE_KEY: string = 'modules';
 
 export function loadModuleStatus() : Module[] | null {
+    if (typeof window !== 'undefined') {
     if (localStorage.getItem(MODULE_KEY) == null) {
         localStorage.setItem(MODULE_KEY, JSON.stringify(tableOfContentsInit))
     }
@@ -26,8 +27,11 @@ export function loadModuleStatus() : Module[] | null {
         return savedModules
     }
 }
+    return null
+}
 
 export function saveSubmoduleStatus(id: string) {
+    if (typeof window !== 'undefined') {
     // TODO: make sure to revalidate / reload the table of contents value
     const modStatusRaw = loadModuleStatus()
     if (modStatusRaw == null) {
@@ -50,6 +54,7 @@ export function saveSubmoduleStatus(id: string) {
     
     localStorage.setItem(MODULE_KEY, JSON.stringify(tableOfContents))
     window.dispatchEvent(new Event("storage"));
+    }
 }
 
 export const tableOfContentsInit = [
