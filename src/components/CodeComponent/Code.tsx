@@ -14,6 +14,7 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import Input from "./Input";
+import { saveSubmoduleStatus, tableOfContentsInit } from "@/services/ModuleStatusStorage";
 
 const editorOptions = {
   enableBasicAutocompletion: true,
@@ -33,10 +34,12 @@ interface CodeEditorProps {
   imageOutput: boolean;
   packages?: Packages;
   setNumberOfRuns: (value: number | ((prevState: number) => number)) => void;
+  moduleId: string;
+  expectedOutput: string | undefined;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-  const { code, packages, data, imageOutput, setNumberOfRuns } = props;
+  const { code, packages, data, imageOutput, setNumberOfRuns, moduleId, expectedOutput } = props;
   const [input, setInput] = useState(code.trimEnd());
   const [showOutput, setShowOutput] = useState(false);
 
@@ -78,6 +81,15 @@ export default function CodeEditor(props: CodeEditorProps) {
   function reset() {
     setShowOutput(false);
     setInput(code.trimEnd());
+  }
+
+  console.log(expectedOutput && stdout === expectedOutput)
+
+  if (expectedOutput && stdout === expectedOutput) {
+    saveSubmoduleStatus(moduleId)
+  }
+  else {
+    saveSubmoduleStatus(moduleId)
   }
 
   return (

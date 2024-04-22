@@ -9,5 +9,5 @@ import { useState } from "react";
 export default function NumpyCode() {
   const snippet = NumpySnippets;
 
-  return <CodeLesson snippet={snippet} />;
+  return <CodeLesson snippet={snippet} moduleId="numpy_coding_lesson"/>;
 }

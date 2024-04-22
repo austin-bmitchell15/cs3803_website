@@ -8,5 +8,5 @@ import { useState } from "react";
 export default function NumpyCode() {
   const snippet = LinegraphsDemoSnippets;
 
-  return <CodeLesson snippet={snippet} />;
+  return <CodeLesson snippet={snippet} moduleId="graphing_linegraphsdemo"/>;
 }

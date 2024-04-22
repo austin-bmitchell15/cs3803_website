@@ -113,6 +113,12 @@ export const tableOfContentsInit = [
                 "id": "numpy_quiz",
                 "path": "/numpy/quiz",
                 "checked": false
+            },
+            {
+                "name": "Numpy Coding Lesson",
+                "id": "numpy_coding_lesson",
+                "path": "/numpy/code",
+                "checked": false
             }
         ]
     },
@@ -154,6 +160,12 @@ export const tableOfContentsInit = [
                 "id": "pandas_quiz",
                 "path": "/pandas/quiz",
                 checked: false
+            },
+            {
+                "name": "Pandas Coding Lesson",
+                "id": "pandas_coding_lesson",
+                "path": "/pandas/code",
+                "checked": false
             }
         ]
     },

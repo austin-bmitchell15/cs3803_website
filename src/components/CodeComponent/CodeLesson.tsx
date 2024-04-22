@@ -7,9 +7,10 @@ import { useState } from "react";
 
 interface CodeLessonProps {
   snippet: Snippet;
+  moduleId: string;
 }
 
-export default function CodeLesson({ snippet }: CodeLessonProps) {
+export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
   const [numberOfRuns, setNumberOfRuns] = useState<number>(0);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
 
@@ -17,9 +18,11 @@ export default function CodeLesson({ snippet }: CodeLessonProps) {
     official: ["numpy", "pandas", "matplotlib"],
   };
 
+
+
   return (
     <div className="flex justify-center h-full">
-      <div className="flex flex-col w-1/3 h-full">
+      <div className="flex flex-col h-full">
         {/* Prompt and its additional content */}
         <div className="flex flex-col h-full p-4 space-y-4">
           <Prompt text={snippet.prompt} />
@@ -42,7 +45,7 @@ export default function CodeLesson({ snippet }: CodeLessonProps) {
           )}
         </div>
       </div>
-      <div className="w-2/3 flex flex-col p-4 space-y-4">
+      <div className="flex flex-col p-4 space-y-4">
         <h3 className="text-right font-bold">Attempt #{numberOfRuns}</h3>
         <CodeComponent
           code={snippet.pythonTemplate}
@@ -50,6 +53,8 @@ export default function CodeLesson({ snippet }: CodeLessonProps) {
           data={AAPLData}
           imageOutput={snippet.imageOutput}
           setNumberOfRuns={setNumberOfRuns}
+          moduleId={moduleId}
+          expectedOutput={snippet.expectedOutput}
         />
       </div>
     </div>
@@ -58,7 +63,7 @@ export default function CodeLesson({ snippet }: CodeLessonProps) {
 
 function Prompt({ text }: { text: string }) {
   return (
-    <Card href="#" className="max-w-sm max-h-80 mr-20">
+    <Card className="max-w-sm max-h-80 mr-20">
       <h5 className="text-normal font-bold tracking-tight text-gray-900 dark:text-white">
         Task
       </h5>
@@ -69,7 +74,7 @@ function Prompt({ text }: { text: string }) {
 
 function ExampleOutput({ text }: { text: string }) {
   return (
-    <Card href="#" className="max-w-sm max-h-80 mr-20">
+    <Card className="max-w-sm max-h-80 mr-20">
       <h5 className="text-normal font-bold tracking-tight text-gray-900 dark:text-white">
         Expected Output
       </h5>
@@ -82,7 +87,7 @@ function RevealedAnswer({ text, isOpen }: { text: string; isOpen: boolean }) {
   return (
     <>
       {isOpen && (
-        <Card href="#" className="p-2">
+        <Card className="p-2">
           <h5 className="text-normal font-bold tracking-tight text-gray-900 dark:text-white">
             Answer
           </h5>
