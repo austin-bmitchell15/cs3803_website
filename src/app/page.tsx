@@ -22,7 +22,7 @@ export default function Home() {
           }}
         >
           <div className="bg-gray-800 w-full my-60 py-20 flex flex-col items-center">
-            <h1 className="text-4xl ">Python for Scientists</h1>
+            <h1 className="text-4xl ">Python for Engineers</h1>
 
             <p className="mt-5 mx-32">
               Unlock the power of Python for data analysis with our tutorials
