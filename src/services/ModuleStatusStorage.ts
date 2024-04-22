@@ -140,7 +140,7 @@ export const tableOfContentsInit = [
             {
                 "name": "Pivot Tables",
                 "id": "pandas_pivottables",
-                "path": "/pandas/pivottables",
+                "path": "/pandas/pivottable",
                 "checked": false
             },
             {
