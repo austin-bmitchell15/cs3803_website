@@ -130,5 +130,5 @@ const numpyContent: Content = [
 import React from "react";
 
 export default function NumpyTablePage() {
-  return <TablePreview content={numpyContent} />;
+  return <TablePreview content={numpyContent} moduleId="numpy_table" />;
 }

@@ -8,32 +8,39 @@ import {
   tableOfContentsInit,
 } from "@/services/ModuleStatusStorage";
 import { usePathname } from "next/navigation";
+import isEqual from "lodash.isequal";
 
 export default function CustomSidebar() {
-  const [introductionCompleteState, setIntroductionCompleteState] =
-    useState(false);
-
   const [tableOfContents, setTableOfContents] =
     useState<Module[]>(tableOfContentsInit);
 
   const currentPath = usePathname();
 
   useEffect(() => {
-    setIntroductionCompleteState(
-      localStorage.getItem("introduction") == "true" || false,
-    );
     const modules: Module[] | null = loadModuleStatus();
     if (modules != null) {
       setTableOfContents(modules);
     }
   }, []);
 
+  // if () {
+    useEffect(() => {
+      window.addEventListener("storage", () => {
+        const modules: Module[] | null = loadModuleStatus();
+        let equality: boolean = isEqual(modules, tableOfContents);
+        if (modules != null && !equality) {
+          setTableOfContents(modules);
+        }
+      });
+    }, [typeof window !== "undefined"]);
+  // }
+
   return (
     <Sidebar className="h-full min-h-full w-auto">
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item className="mb-4" href="/">
-            TABLE OF CONTENTS
+            PYTHON FOR ENGINEERS
           </Sidebar.Item>
         </Sidebar.ItemGroup>
 

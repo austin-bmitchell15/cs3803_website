@@ -35,20 +35,21 @@ export function saveSubmoduleStatus(id: string) {
     }
 
     const tableOfContents: Module[] = modStatusRaw
-    console.log("hello: " + id)
 
     for (var i = 0; i < tableOfContents.length; i++) {
         for (var j  = 0; j < tableOfContents[i].submodules.length; j++) {
+
             if (tableOfContents[i].submodules[j].id == id) {
                 console.log("found: ")
                 tableOfContents[i].submodules[j].checked = true
-                console.log(tableOfContents)
             }
         }
     }
-    
 
+    
+    
     localStorage.setItem(MODULE_KEY, JSON.stringify(tableOfContents))
+    window.dispatchEvent(new Event("storage"));
 }
 
 export const tableOfContentsInit = [
@@ -86,7 +87,7 @@ export const tableOfContentsInit = [
             },
             {
                 "name": "Array Indexing",
-                "id": "numpy_indexing",
+                "id": "numpy_index",
                 "path": "/numpy/index",
                 "checked": false
             },
@@ -146,7 +147,7 @@ export const tableOfContentsInit = [
             {
                 "name": "Pivot Tables",
                 "id": "pandas_pivottables",
-                "path": "/pandas/pivottables",
+                "path": "/pandas/pivottable",
                 "checked": false
             },
             {
