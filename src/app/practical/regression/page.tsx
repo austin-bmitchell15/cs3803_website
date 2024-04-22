@@ -1,7 +1,8 @@
 import VideoComponent from "@/components/Video";
 
-const videoId: string = "PfkW-FIpDj0"
-const description: string = "Demonstration of the using data analysis for regression problem in Python."
+const videoId: string = "PfkW-FIpDj0";
+const description: string =
+  "Demonstration of the using data analysis for regression problem in Python.";
 const transcript: string = `Welcome to our last module where we demonstrate how all of the tools we showcased in past modules can be used to analyze a sample dataset. In this lesson, we will graph Apple’s stock prices, and calculate a simple linear regression. 
 
 Starting with the first step, we import our data set using Pandas, and change our Date column to have numerical values to make it easier to work with in the future.  
@@ -16,17 +17,21 @@ In the fifth step, we compute evaluation metrics for the linear regression model
 
 In the sixth step, we plot the Apple stock prices over time with the Linear regression. The output should look like this.  
 
-Thanks for tuning in to our lessons on data analysis. We wish you the best of luck! `
+Thanks for tuning in to our lessons on data analysis. We wish you the best of luck! `;
 
-const moduleId: string = "practical_regression"
+const moduleId: string = "practical_regression";
 
 export default function Regression() {
-
-    return (
-      <div className="ml-5 mt-5 w-full">
-          <div className="flex justify-center w-full overflow-y-auto">
-            <VideoComponent videoId={videoId} description={description} transcript={transcript} moduleId={moduleId}/>
-          </div>
+  return (
+    <div className="ml-5 mt-5 w-full">
+      <div className="flex justify-center w-full overflow-y-auto">
+        <VideoComponent
+          videoId={videoId}
+          description={description}
+          transcript={transcript}
+          moduleId={moduleId}
+        />
       </div>
-    )
-  }
+    </div>
+  );
+}

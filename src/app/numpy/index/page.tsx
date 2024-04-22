@@ -1,7 +1,7 @@
 import VideoComponent from "@/components/Video";
 
-const videoId: string = "GbAXZmn56So"
-const description: string = "Indexing and accessing elements in Numpy array's."
+const videoId: string = "GbAXZmn56So";
+const description: string = "Indexing and accessing elements in Numpy array's.";
 const transcript: string = `Welcome back to our lesson on Numpy.  
 
 Last time, we showed you how to install Numpy, and how to create a simple 1 Dimensional array. However, in Numpy, you can also create 2 dimensional arrays, and even 3 dimensional arrays. We will only go over 2 dimensional arrays and below, but feel free to look at Numpy’s official documentation for more information on 3D arrays.  
@@ -12,17 +12,21 @@ To access data from these arrays, Numpy allows you to index them, pulling values
 
 2D arrays can be accessed in a similar way, by using a “row comma column” format. If you take a look at the example on the right, the value in the first row and the first column is printed out when given the index values “0, 0”. Slicing is also done in a similar fashion, as shown in this example, with a comma being the only difference.  
 
-That concludes our lesson on 2D arrays and array indexing. Next, we’ll teach you about array shapes.`
+That concludes our lesson on 2D arrays and array indexing. Next, we’ll teach you about array shapes.`;
 
-const moduleId: string = "numpy_index"
+const moduleId: string = "numpy_index";
 
 export default function NumpyIndexing() {
-
-    return (
-      <div className="ml-5 mt-5 w-full">
-          <div className="flex justify-center w-full overflow-y-auto">
-            <VideoComponent videoId={videoId} description={description} transcript={transcript} moduleId={moduleId}/>
-          </div>
+  return (
+    <div className="ml-5 mt-5 w-full">
+      <div className="flex justify-center w-full overflow-y-auto">
+        <VideoComponent
+          videoId={videoId}
+          description={description}
+          transcript={transcript}
+          moduleId={moduleId}
+        />
       </div>
-    )
-  }
+    </div>
+  );
+}

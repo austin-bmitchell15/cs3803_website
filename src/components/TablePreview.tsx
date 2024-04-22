@@ -1,41 +1,40 @@
-"use client"
+"use client";
 
-import { Table } from 'flowbite-react'
-import React from 'react'
-import { Content } from '@/services/TableTypes'
+import { Table } from "flowbite-react";
+import React from "react";
+import { Content } from "@/services/TableTypes";
 
-export default function TablePreview({content}: {content: Content}) {
+export default function TablePreview({ content }: { content: Content }) {
   return (
-    <div className='px-10'>
-        {content.map((section, idx) => {
-            return (
-                <div key={idx} className='mb-10'>
-            <h1 className='text-xl mb-4'>{section.title}</h1>
+    <div className="px-10">
+      {content.map((section, idx) => {
+        return (
+          <div key={idx} className="mb-10">
+            <h1 className="text-xl mb-4">{section.title}</h1>
             <div className="overflow-x-auto">
-            <Table>
+              <Table>
                 <Table.Head>
-                <Table.HeadCell>Functions</Table.HeadCell>
-                <Table.HeadCell>What it does</Table.HeadCell>
+                  <Table.HeadCell>Functions</Table.HeadCell>
+                  <Table.HeadCell>What it does</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
-                    {section.items.map((item, idx) => {
-                        return (
-                            <Table.Row key={idx} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                                <Table.Cell>{item.func}</Table.Cell>
-                                <Table.Cell>{item.what_it_does}</Table.Cell>
-                            </Table.Row>
-
-                        )
-                    })}
+                  {section.items.map((item, idx) => {
+                    return (
+                      <Table.Row
+                        key={idx}
+                        className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                      >
+                        <Table.Cell>{item.func}</Table.Cell>
+                        <Table.Cell>{item.what_it_does}</Table.Cell>
+                      </Table.Row>
+                    );
+                  })}
                 </Table.Body>
-            </Table>
+              </Table>
             </div>
-            </div>
-            )    
-        })}
-
-
-
+          </div>
+        );
+      })}
     </div>
-  )
+  );
 }
