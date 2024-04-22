@@ -24,15 +24,15 @@ export default function CustomSidebar() {
   }, []);
 
   // if () {
-    useEffect(() => {
-      window.addEventListener("storage", () => {
-        const modules: Module[] | null = loadModuleStatus();
-        let equality: boolean = isEqual(modules, tableOfContents);
-        if (modules != null && !equality) {
-          setTableOfContents(modules);
-        }
-      });
-    }, [typeof window !== "undefined"]);
+  useEffect(() => {
+    window.addEventListener("storage", () => {
+      const modules: Module[] | null = loadModuleStatus();
+      let equality: boolean = isEqual(modules, tableOfContents);
+      if (modules != null && !equality) {
+        setTableOfContents(modules);
+      }
+    });
+  }, [typeof window !== "undefined"]);
   // }
 
   return (

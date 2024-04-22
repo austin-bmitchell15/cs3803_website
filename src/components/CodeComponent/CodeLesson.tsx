@@ -1,6 +1,7 @@
 "use client";
 import CodeComponent from "@/components/CodeComponent/Code";
 import { AAPLData } from "@/data/APPLE";
+import { saveSubmoduleStatus } from "@/services/ModuleStatusStorage";
 import { Snippet } from "@/utils/types";
 import { Button, Card } from "flowbite-react";
 import { useState } from "react";
@@ -55,11 +56,12 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
           packages={packages}
           data={AAPLData}
           imageOutput={snippet.imageOutput}
+          numberOfRuns={numberOfRuns}
           setNumberOfRuns={setNumberOfRuns}
-          moduleId={moduleId}
-          expectedOutput={snippet.expectedOutput}
           setStdout={setStdout}
           setStderr={setStderr}
+          expectedOutput={snippet.expectedOutput}
+          moduleId={moduleId}
         />
       </div>
     </div>
