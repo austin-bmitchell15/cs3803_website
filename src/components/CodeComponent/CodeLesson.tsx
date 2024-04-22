@@ -13,8 +13,8 @@ export default function CodeLesson({ snippet }: CodeLessonProps) {
   };
 
   return (
-    <div className="flex">
-      <div className="w-2/3 flex justify-center">
+    <div className="flex justify-between">
+      <div className="flex flex-col w-2/3">
         <Prompt text={snippet.prompt} />
       </div>
       <div className="w-2/3 flex justify-center">

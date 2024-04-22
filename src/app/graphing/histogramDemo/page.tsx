@@ -9,9 +9,5 @@ import { useState } from "react";
 export default function NumpyCode() {
   const snippet = HistogramDemoSnippets;
 
-  return (
-    <SubmoduleContainer>
-      <CodeLesson snippet={snippet} />
-    </SubmoduleContainer>
-  );
+  return <CodeLesson snippet={snippet} />;
 }

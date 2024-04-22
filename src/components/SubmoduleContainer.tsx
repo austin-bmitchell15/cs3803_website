@@ -43,7 +43,7 @@ export default function SubmoduleContainer(props: { children: any }) {
   }
 
   return (
-    <div className="flex flex-col flex-grow items-center justify-between p-4 border border-gray-200 rounded-lg shadow-sm">
+    <div className="flex flex-col flex-grow items-center justify-between p-4 border rounded-lg shadow-sm">
       <h2 className="text-xl font-bold mb-4">
         {submoduleTitleList[currentModuleIndex]}
       </h2>

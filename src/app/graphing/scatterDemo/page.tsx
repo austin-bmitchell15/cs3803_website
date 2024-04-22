@@ -8,9 +8,5 @@ import { ScatterDemoSnippets } from "@/data/Graphing/ScatterDemoSnippets";
 export default function NumpyCode() {
   const snippet = ScatterDemoSnippets;
 
-  return (
-    <SubmoduleContainer>
-      <CodeLesson snippet={snippet} />
-    </SubmoduleContainer>
-  );
+  return <CodeLesson snippet={snippet} />;
 }
