@@ -1,20 +1,20 @@
-import React from 'react'
-import clsx from 'clsx'
+import React from "react";
+import clsx from "clsx";
 
 interface ControlProps {
   items: {
-    label: string
-    icon: any
-    onClick: () => void
-    disabled?: boolean
-    hidden?: boolean
-  }[]
-  isAwaitingInput?: boolean
+    label: string;
+    icon: any;
+    onClick: () => void;
+    disabled?: boolean;
+    hidden?: boolean;
+  }[];
+  isAwaitingInput?: boolean;
 }
 
 export default function Controls(props: ControlProps) {
-  const { items, isAwaitingInput } = props
-  const visibleItems = items.filter((item) => !item.hidden)
+  const { items, isAwaitingInput } = props;
+  const visibleItems = items.filter((item) => !item.hidden);
 
   return (
     <div className="pointer-events-none z-10 -mb-16 flex justify-end p-2">
@@ -52,12 +52,12 @@ export default function Controls(props: ControlProps) {
               onClick={item.onClick}
               disabled={item.disabled}
               className={clsx(
-                'relative inline-flex items-center border border-none border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none focus:ring-0',
+                "relative inline-flex items-center border border-none border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none focus:ring-0",
                 !item.disabled
-                  ? 'opacity-75 hover:cursor-pointer hover:bg-gray-50 hover:opacity-100'
-                  : 'opacity-50 hover:cursor-not-allowed',
-                i === 0 && 'rounded-l-md',
-                i === visibleItems.length - 1 && 'rounded-r-md'
+                  ? "opacity-75 hover:cursor-pointer hover:bg-gray-50 hover:opacity-100"
+                  : "opacity-50 hover:cursor-not-allowed",
+                i === 0 && "rounded-l-md",
+                i === visibleItems.length - 1 && "rounded-r-md",
               )}
             >
               <item.icon
@@ -70,5 +70,5 @@ export default function Controls(props: ControlProps) {
         </span>
       </div>
     </div>
-  )
+  );
 }

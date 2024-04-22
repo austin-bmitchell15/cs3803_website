@@ -1,0 +1,23 @@
+# Next.js build output
+.next/
+out/
+.build/
+
+# Various config files
+.next.config.js
+tailwind.config.js
+postcss.config.js
+
+# Dependencies
+node_modules/
+
+# Public assets
+public/
+
+# Static files
+static/
+
+# Tailwind CSS output (if you have a dedicated output file)
+styles/tailwind-output.css
+
+src/services

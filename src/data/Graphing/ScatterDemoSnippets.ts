@@ -1,7 +1,7 @@
 import { Snippet } from "@/utils/types";
 
-export const ScatterDemoSnippets : Snippet = {
-    pythonTemplate: `import os
+export const ScatterDemoSnippets: Snippet = {
+  pythonTemplate: `import os
 import base64
 from io import BytesIO
 os.environ['MPLBACKEND'] = 'AGG'
@@ -38,8 +38,8 @@ plt.title("Apple Stocks High Prices By Date")
 plt.xlabel("Date")
 plt.ylabel("High Prices")
 plt.show()`,
-    prompt: `Here is an example of the linegraph that was presented in the previous video`,
-    pythonExampleCode: undefined,
-    expectedOutput: undefined,
-    imageOutput: true,
-}
+  prompt: `Here is an example of the linegraph that was presented in the previous video`,
+  pythonExampleCode: undefined,
+  expectedOutput: undefined,
+  imageOutput: true,
+};

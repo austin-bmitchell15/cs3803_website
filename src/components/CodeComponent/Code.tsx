@@ -1,49 +1,48 @@
-'useClient'
-import React, { useEffect, useState } from 'react'
+"useClient";
+import React, { useEffect, useState } from "react";
 
-import { usePython } from 'react-py'
-import { Packages } from 'react-py/dist/types/Packages'
-import Controls from './Controls'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import StopIcon from '@mui/icons-material/Stop';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
-import { TextInput } from 'flowbite-react'
+import { usePython } from "react-py";
+import { Packages } from "react-py/dist/types/Packages";
+import Controls from "./Controls";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import StopIcon from "@mui/icons-material/Stop";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import { TextInput } from "flowbite-react";
 import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
-import Input from './Input'
+import Input from "./Input";
 
 const editorOptions = {
   enableBasicAutocompletion: true,
   enableLiveAutocompletion: true,
   highlightActiveLine: false,
-  showPrintMargin: false
-}
+  showPrintMargin: false,
+};
 
-const editorOnLoad = (editor : any) => {
-  editor.renderer.setScrollMargin(10, 10, 0, 0)
-  editor.moveCursorTo(0, 0)
-}
+const editorOnLoad = (editor: any) => {
+  editor.renderer.setScrollMargin(10, 10, 0, 0);
+  editor.moveCursorTo(0, 0);
+};
 
 interface CodeEditorProps {
-  code: string
-  data: string
-  imageOutput: boolean
-  packages?: Packages
+  code: string;
+  data: string;
+  imageOutput: boolean;
+  packages?: Packages;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-  const { code, packages, data, imageOutput } = props
-  const [input, setInput] = useState(code.trimEnd())
-  const [showOutput, setShowOutput] = useState(false)
-
+  const { code, packages, data, imageOutput } = props;
+  const [input, setInput] = useState(code.trimEnd());
+  const [showOutput, setShowOutput] = useState(false);
 
   useEffect(() => {
-    setInput(code.trimEnd())
-    setShowOutput(false)
-  }, [code])
+    setInput(code.trimEnd());
+    setShowOutput(false);
+  }, [code]);
 
   const {
     runPython,
@@ -56,27 +55,27 @@ export default function CodeEditor(props: CodeEditorProps) {
     sendInput,
     prompt,
     writeFile,
-  } = usePython({ packages })
+  } = usePython({ packages });
 
   if (data) {
-    writeFile('AAPL.csv', data)
+    writeFile("AAPL.csv", data);
   }
 
   function run() {
     if (!isLoading) {
-      runPython(input)
-      setShowOutput(true)
+      runPython(input);
+      setShowOutput(true);
     }
   }
 
   function stop() {
-    interruptExecution()
-    setShowOutput(false)
+    interruptExecution();
+    setShowOutput(false);
   }
 
   function reset() {
-    setShowOutput(false)
-    setInput(code.trimEnd())
+    setShowOutput(false);
+    setInput(code.trimEnd());
   }
 
   return (
@@ -84,19 +83,19 @@ export default function CodeEditor(props: CodeEditorProps) {
       <Controls
         items={[
           {
-            label: 'Run',
+            label: "Run",
             icon: PlayArrowIcon,
             onClick: run,
             disabled: isLoading || isRunning,
-            hidden: isRunning
+            hidden: isRunning,
           },
-          { label: 'Stop', icon: StopIcon, onClick: stop, hidden: !isRunning },
+          { label: "Stop", icon: StopIcon, onClick: stop, hidden: !isRunning },
           {
-            label: 'Reset',
+            label: "Reset",
             icon: AutorenewIcon,
             onClick: reset,
-            disabled: isRunning
-          }
+            disabled: isRunning,
+          },
         ]}
         isAwaitingInput={isAwaitingInput}
       />
@@ -106,7 +105,7 @@ export default function CodeEditor(props: CodeEditorProps) {
         name="CodeBlock"
         fontSize="0.9rem"
         className="min-h-[40rem] min-w-[40rem] overflow-clip rounded shadow-md"
-        theme='one_dark'
+        theme="one_dark"
         onChange={(newValue) => setInput(newValue)}
         width="100%"
         maxLines={Infinity}
@@ -123,13 +122,12 @@ export default function CodeEditor(props: CodeEditorProps) {
           <code className="text-red-500">{stderr}</code>
         </pre>
       )}
-      {imageOutput && (!stderr ? (
-          stdout && stdout.startsWith('data:image/png;base64,') ? (
-            <img src={stdout} className='mt-4'/>
+      {imageOutput &&
+        (!stderr ? (
+          stdout && stdout.startsWith("data:image/png;base64,") ? (
+            <img src={stdout} className="mt-4" />
           ) : (
-            <h4>
-              No image yet. Click run to see the result.
-            </h4>
+            <h4>No image yet. Click run to see the result.</h4>
           )
         ) : (
           <pre className="mt-4 text-left">
@@ -137,5 +135,5 @@ export default function CodeEditor(props: CodeEditorProps) {
           </pre>
         ))}
     </div>
-  )
+  );
 }

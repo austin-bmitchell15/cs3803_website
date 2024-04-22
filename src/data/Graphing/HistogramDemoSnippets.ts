@@ -1,7 +1,7 @@
 import { Snippet } from "@/utils/types";
 
-export const HistogramDemoSnippets : Snippet = {
-    pythonTemplate: `import os
+export const HistogramDemoSnippets: Snippet = {
+  pythonTemplate: `import os
 import base64
 from io import BytesIO
 os.environ['MPLBACKEND'] = 'AGG'
@@ -34,8 +34,8 @@ plt.xlabel('Closing Prices')
 plt.ylabel('Frequency')
 
 plt.show()`,
-    prompt: `Here is an example of the histogram that was presented in the previous video`,
-    pythonExampleCode: undefined,
-    expectedOutput: undefined,
-    imageOutput: true,
-}
+  prompt: `Here is an example of the histogram that was presented in the previous video`,
+  pythonExampleCode: undefined,
+  expectedOutput: undefined,
+  imageOutput: true,
+};
