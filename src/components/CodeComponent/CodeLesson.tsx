@@ -82,7 +82,7 @@ function RevealedAnswer({ text, isOpen }: { text: string; isOpen: boolean }) {
   return (
     <>
       {isOpen && (
-        <Card href="#" className="max-h-80">
+        <Card href="#" className="p-2">
           <h5 className="text-normal font-bold tracking-tight text-gray-900 dark:text-white">
             Answer
           </h5>
