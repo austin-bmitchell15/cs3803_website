@@ -41,7 +41,7 @@ interface CodeEditorProps {
   setStderr: (arg: string) => void;
   expectedOutput: string | undefined;
   moduleId: string;
-  numberOfRuns: number
+  numberOfRuns: number;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
@@ -107,7 +107,7 @@ export default function CodeEditor(props: CodeEditorProps) {
 
   if (expectedOutput && stdout === expectedOutput) {
     saveSubmoduleStatus(moduleId);
-  } else if(imageOutput && numberOfRuns > 0) {
+  } else if (imageOutput && numberOfRuns > 0) {
     saveSubmoduleStatus(moduleId);
   }
 

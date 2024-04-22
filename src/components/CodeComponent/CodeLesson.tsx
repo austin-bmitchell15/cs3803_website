@@ -21,8 +21,6 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
     official: ["numpy", "pandas", "matplotlib"],
   };
 
-  
-
   return (
     <div className="flex justify-center h-full">
       <div className="flex flex-col h-full">
