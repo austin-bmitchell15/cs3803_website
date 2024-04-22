@@ -43,7 +43,7 @@ export default function QuizComponent({ quiz, moduleId }: { quiz: QuizType, modu
       <ListGroup className="w-60">
         {quiz.map((q, i) => {
           return (
-          <ListGroup.Item className={checkedMode ? (selectedOption[i] == q.answerOption ? "text-green-700": "text-red-500") : ""} active={i == viewedQuestionIndex} key={i} onClick={() => setViewedQuestionIndex(i)}>Question {i}</ListGroup.Item>)
+          <ListGroup.Item key={i} className={checkedMode ? (selectedOption[i] == q.answerOption ? "text-green-700": "text-red-500") : ""} active={i == viewedQuestionIndex} onClick={() => setViewedQuestionIndex(i)}>Question {i}</ListGroup.Item>)
         })}
       </ListGroup>
       {checkedMode ? 
@@ -163,7 +163,7 @@ function QuestionView({question, selectOption, selectedOption}:{question: QnATyp
       <fieldset className="flex max-w-md flex-col gap-4">
         {/* <legend className="mb-4">Choose your favorite country</legend> */}
         {question.options.map((opt, i) => (
-          <div className="flex items-center gap-2">
+          <div key={i} className="flex items-center gap-2">
             <Radio id={opt} key={i} name={question.question} value={i} checked={selectedOption == i} onChange={handleRadioChange}/>
             <Label htmlFor={opt}>{opt}</Label>
           </div>
@@ -203,7 +203,7 @@ function SubmittedQuestionView({question, selectedAnswer} : {question: QnAType, 
         <fieldset className="flex max-w-md flex-col gap-4">
           {/* <legend className="mb-4">Choose your favorite country</legend> */}
           {question.options.map((opt, i) => (
-            <div className="flex items-center gap-2">
+            <div key={i} className="flex items-center gap-2">
               <Radio id={opt} key={i} name={question.question} value={i} checked={selectedAnswer == i} disabled/>
               {/* {checkedMode ? ((i == question.answerOption) ? <p>Hwllo</p> : <p>Clapped</p>) : <p>COnfused</p>} */}
               <Label className={textColors[i]} htmlFor={opt}>{opt}</Label>
