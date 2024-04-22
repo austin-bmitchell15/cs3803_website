@@ -5,11 +5,16 @@ import React, { useEffect } from "react";
 import { Content } from "@/services/TableTypes";
 import { saveSubmoduleStatus } from "@/services/ModuleStatusStorage";
 
-export default function TablePreview({ content, moduleId }: { content: Content, moduleId: string }) {
-
+export default function TablePreview({
+  content,
+  moduleId,
+}: {
+  content: Content;
+  moduleId: string;
+}) {
   useEffect(() => {
-    saveSubmoduleStatus(moduleId)
-  }, [])
+    saveSubmoduleStatus(moduleId);
+  }, []);
   return (
     <div className="px-10">
       {content.map((section, idx) => {

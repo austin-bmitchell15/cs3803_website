@@ -8,11 +8,9 @@ import {
   tableOfContentsInit,
 } from "@/services/ModuleStatusStorage";
 import { usePathname } from "next/navigation";
-import isEqual from 'lodash.isequal';
-
+import isEqual from "lodash.isequal";
 
 export default function CustomSidebar() {
-
   const [tableOfContents, setTableOfContents] =
     useState<Module[]>(tableOfContentsInit);
 
@@ -25,14 +23,19 @@ export default function CustomSidebar() {
     }
   }, []);
 
-  window.addEventListener('storage', () => {
-    const modules: Module[] | null = loadModuleStatus();
-    let equality: boolean = isEqual(modules, tableOfContents)
-    console.log(equality)
-    if (modules != null && !equality) {
-      setTableOfContents(modules);
-    }
-})
+  if (typeof window !== 'undefined') {
+
+    useEffect(() => {
+      window.addEventListener("storage", () => {
+        const modules: Module[] | null = loadModuleStatus();
+        let equality: boolean = isEqual(modules, tableOfContents);
+        if (modules != null && !equality) {
+          setTableOfContents(modules);
+        }
+      });
+    }, [window]);
+  }
+
 
   return (
     <Sidebar className="h-full min-h-full w-auto">

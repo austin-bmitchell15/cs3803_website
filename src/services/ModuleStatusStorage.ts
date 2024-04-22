@@ -35,18 +35,13 @@ export function saveSubmoduleStatus(id: string) {
     }
 
     const tableOfContents: Module[] = modStatusRaw
-    console.log("hello: " + id)
 
     for (var i = 0; i < tableOfContents.length; i++) {
-        console.log(i)
         for (var j  = 0; j < tableOfContents[i].submodules.length; j++) {
-        console.log(tableOfContents[i].submodules[j].id)
-        console.log(id)
 
             if (tableOfContents[i].submodules[j].id == id) {
                 console.log("found: ")
                 tableOfContents[i].submodules[j].checked = true
-                console.log(tableOfContents)
             }
         }
     }

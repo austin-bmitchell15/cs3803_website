@@ -24,7 +24,7 @@ export default function VideoComponent({
     saveSubmoduleStatus(moduleId);
   }
   return (
-    <div className="flex justify-center h-screen">
+    <div className="flex justify-center ">
       <div className="flex flex-col items-center">
         {/* <!-- Children elements --> */}
         <p className="text-xl mt-10 mb-4">{description}</p>
