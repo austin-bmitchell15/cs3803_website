@@ -23,8 +23,7 @@ export default function CustomSidebar() {
     }
   }, []);
 
-  if (typeof window !== 'undefined') {
-
+  if (typeof window !== "undefined") {
     useEffect(() => {
       window.addEventListener("storage", () => {
         const modules: Module[] | null = loadModuleStatus();
@@ -35,7 +34,6 @@ export default function CustomSidebar() {
       });
     }, [window]);
   }
-
 
   return (
     <Sidebar className="h-full min-h-full w-auto">
