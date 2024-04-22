@@ -32,10 +32,11 @@ interface CodeEditorProps {
   data: string;
   imageOutput: boolean;
   packages?: Packages;
+  setNumberOfRuns: (value: number | ((prevState: number) => number)) => void;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-  const { code, packages, data, imageOutput } = props;
+  const { code, packages, data, imageOutput, setNumberOfRuns } = props;
   const [input, setInput] = useState(code.trimEnd());
   const [showOutput, setShowOutput] = useState(false);
 
@@ -64,6 +65,7 @@ export default function CodeEditor(props: CodeEditorProps) {
   function run() {
     if (!isLoading) {
       runPython(input);
+      setNumberOfRuns((prevState) => prevState + 1);
       setShowOutput(true);
     }
   }
@@ -115,25 +117,36 @@ export default function CodeEditor(props: CodeEditorProps) {
       />
 
       {isAwaitingInput && <Input prompt={prompt} onSubmit={sendInput} />}
-
-      {!imageOutput && showOutput && (
-        <pre className="mt-4 text-left">
-          <code>{stdout}</code>
-          <code className="text-red-500">{stderr}</code>
-        </pre>
-      )}
-      {imageOutput &&
-        (!stderr ? (
-          stdout && stdout.startsWith("data:image/png;base64,") ? (
-            <img src={stdout} className="mt-4" />
-          ) : (
-            <h4>No image yet. Click run to see the result.</h4>
-          )
-        ) : (
+      <div className="pt-4 space-y-2">
+        <h2 className="font-bold">Output:</h2>
+        {!imageOutput && showOutput && (
           <pre className="mt-4 text-left">
+            <code>{stdout}</code>
             <code className="text-red-500">{stderr}</code>
           </pre>
-        ))}
+        )}
+        {!imageOutput && showOutput && stdout == "" && (
+          <pre className="mt-4 text-left">
+            <code>
+              No Output. Please make sure you are printing something out by
+              using print()
+            </code>
+            <code className="text-red-500">{stderr}</code>
+          </pre>
+        )}
+        {imageOutput &&
+          (!stderr ? (
+            stdout && stdout.startsWith("data:image/png;base64,") ? (
+              <img src={stdout} className="mt-4" />
+            ) : (
+              <h4>No image yet. Click run to see the result.</h4>
+            )
+          ) : (
+            <pre className="mt-4 text-left">
+              <code className="text-red-500">{stderr}</code>
+            </pre>
+          ))}
+      </div>
     </div>
   );
 }
