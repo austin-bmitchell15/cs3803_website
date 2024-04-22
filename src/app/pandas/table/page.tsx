@@ -122,5 +122,5 @@ const pandasContent: Content = [
   },
 ];
 export default function PandasTable() {
-  return <TablePreview content={pandasContent} />;
+  return <TablePreview content={pandasContent} moduleId="pandas_table"/>;
 }
