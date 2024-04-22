@@ -21,5 +21,6 @@ arr = np.array([[1, 2, 3, 4, 5],
 print(arr[1, 1:4])
 
 #User Code Ends here`,
-    expectedOutput: `[7 8 9]`
+    expectedOutput: `[7 8 9]`,
+    imageOutput: false,
 }

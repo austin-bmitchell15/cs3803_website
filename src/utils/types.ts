@@ -3,4 +3,5 @@ export interface Snippet {
     pythonTemplate: string
     pythonExampleCode: string | undefined
     expectedOutput: string | undefined
+    imageOutput: boolean
 }

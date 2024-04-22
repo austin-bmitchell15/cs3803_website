@@ -20,7 +20,7 @@ export default function CodeLesson({snippet} : CodeLessonProps) {
             </div>
             <div className='w-2/3 flex justify-center'>
 
-            <CodeComponent code={snippet.pythonTemplate} packages={packages} data={AAPLData}/>
+            <CodeComponent code={snippet.pythonTemplate} packages={packages} data={AAPLData} imageOutput={true}/>
             </div>
         </div>
     )

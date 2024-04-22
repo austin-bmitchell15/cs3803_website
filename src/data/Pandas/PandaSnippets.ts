@@ -18,4 +18,5 @@ print(rolling_average)`,
     rolling_average = rolling_average.dropna()
     print(rolling_average)`,
     expectedOutput: undefined,
+    imageOutput: false,
 }
