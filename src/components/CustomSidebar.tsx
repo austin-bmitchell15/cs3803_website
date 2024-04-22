@@ -8,10 +8,10 @@ import {
   tableOfContentsInit,
 } from "@/services/ModuleStatusStorage";
 import { usePathname } from "next/navigation";
+import isEqual from 'lodash.isequal';
+
 
 export default function CustomSidebar() {
-  const [introductionCompleteState, setIntroductionCompleteState] =
-    useState(false);
 
   const [tableOfContents, setTableOfContents] =
     useState<Module[]>(tableOfContentsInit);
@@ -19,21 +19,36 @@ export default function CustomSidebar() {
   const currentPath = usePathname();
 
   useEffect(() => {
-    setIntroductionCompleteState(
-      localStorage.getItem("introduction") == "true" || false,
-    );
     const modules: Module[] | null = loadModuleStatus();
     if (modules != null) {
       setTableOfContents(modules);
     }
   }, []);
 
+  // useEffect(() => {
+  //   const modules: Module[] | null = loadModuleStatus();
+  //   let equality: boolean = isEqual(modules, tableOfContents)
+  //   console.log(equality)
+  //   if (modules != null && !equality) {
+  //     setTableOfContents(modules);
+  //   }
+  // }, [loadModuleStatus]);
+
+  window.addEventListener('storage', () => {
+    const modules: Module[] | null = loadModuleStatus();
+    let equality: boolean = isEqual(modules, tableOfContents)
+    console.log(equality)
+    if (modules != null && !equality) {
+      setTableOfContents(modules);
+    }
+})
+
   return (
     <Sidebar className="h-full min-h-full w-auto">
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item className="mb-4" href="/">
-            TABLE OF CONTENTS
+            PYTHON FOR ENGINEERS
           </Sidebar.Item>
         </Sidebar.ItemGroup>
 

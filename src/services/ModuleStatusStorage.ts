@@ -38,7 +38,11 @@ export function saveSubmoduleStatus(id: string) {
     console.log("hello: " + id)
 
     for (var i = 0; i < tableOfContents.length; i++) {
+        console.log(i)
         for (var j  = 0; j < tableOfContents[i].submodules.length; j++) {
+        console.log(tableOfContents[i].submodules[j].id)
+        console.log(id)
+
             if (tableOfContents[i].submodules[j].id == id) {
                 console.log("found: ")
                 tableOfContents[i].submodules[j].checked = true
@@ -46,9 +50,11 @@ export function saveSubmoduleStatus(id: string) {
             }
         }
     }
-    
 
+    
+    
     localStorage.setItem(MODULE_KEY, JSON.stringify(tableOfContents))
+    window.dispatchEvent(new Event("storage"));
 }
 
 export const tableOfContentsInit = [
@@ -86,7 +92,7 @@ export const tableOfContentsInit = [
             },
             {
                 "name": "Array Indexing",
-                "id": "numpy_indexing",
+                "id": "numpy_index",
                 "path": "/numpy/index",
                 "checked": false
             },
