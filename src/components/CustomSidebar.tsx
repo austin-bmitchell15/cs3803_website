@@ -25,15 +25,6 @@ export default function CustomSidebar() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const modules: Module[] | null = loadModuleStatus();
-  //   let equality: boolean = isEqual(modules, tableOfContents)
-  //   console.log(equality)
-  //   if (modules != null && !equality) {
-  //     setTableOfContents(modules);
-  //   }
-  // }, [loadModuleStatus]);
-
   window.addEventListener('storage', () => {
     const modules: Module[] | null = loadModuleStatus();
     let equality: boolean = isEqual(modules, tableOfContents)
