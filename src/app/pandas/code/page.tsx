@@ -8,5 +8,5 @@ import { useState } from "react";
 export default function PandasCode() {
   const snippet = PandaSnippets;
 
-  return <CodeLesson snippet={snippet} moduleId="pandas_coding_lesson"/>;
+  return <CodeLesson snippet={snippet} moduleId="pandas_coding_lesson" />;
 }

@@ -13,12 +13,12 @@ interface CodeLessonProps {
 export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
   const [numberOfRuns, setNumberOfRuns] = useState<number>(0);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
+  const [stdout, setStdout] = useState<string>("");
+  const [stderr, setStderr] = useState<string>("");
 
   const packages = {
     official: ["numpy", "pandas", "matplotlib"],
   };
-
-
 
   return (
     <div className="flex justify-center h-full">
@@ -43,6 +43,9 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
               isOpen={showAnswer}
             />
           )}
+          {snippet.imageOutput && (
+            <ImageOutput stdout={stdout} stderr={stderr} />
+          )}
         </div>
       </div>
       <div className="flex flex-col p-4 space-y-4">
@@ -55,6 +58,8 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
           setNumberOfRuns={setNumberOfRuns}
           moduleId={moduleId}
           expectedOutput={snippet.expectedOutput}
+          setStdout={setStdout}
+          setStderr={setStderr}
         />
       </div>
     </div>
@@ -63,7 +68,7 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
 
 function Prompt({ text }: { text: string }) {
   return (
-    <Card className="max-w-sm max-h-80 mr-20">
+    <Card className="max-w-lg max-h-80 mr-20">
       <h5 className="text-normal font-bold tracking-tight text-gray-900 dark:text-white">
         Task
       </h5>
@@ -74,11 +79,13 @@ function Prompt({ text }: { text: string }) {
 
 function ExampleOutput({ text }: { text: string }) {
   return (
-    <Card className="max-w-sm max-h-80 mr-20">
+    <Card className="max-h-80 mr-20">
       <h5 className="text-normal font-bold tracking-tight text-gray-900 dark:text-white">
         Expected Output
       </h5>
-      <p className="font-3xl  text-gray-700 dark:text-gray-400">{text}</p>
+      <pre className="mt-4 text-left text-black">
+        <code>{text}</code>
+      </pre>
     </Card>
   );
 }
@@ -95,6 +102,25 @@ function RevealedAnswer({ text, isOpen }: { text: string; isOpen: boolean }) {
             <code>{text}</code>
           </pre>
         </Card>
+      )}
+    </>
+  );
+}
+
+function ImageOutput({ stdout, stderr }: { stdout: string; stderr: string }) {
+  return (
+    <>
+      <h2 className="font-bold">Output:</h2>
+      {!stderr ? (
+        stdout && stdout.startsWith("data:image/png;base64,") ? (
+          <img src={stdout} className="mt-4" />
+        ) : (
+          <h4>No image yet. Click run to see the result.</h4>
+        )
+      ) : (
+        <pre className="mt-4 text-left">
+          <code className="text-red-500">{stderr}</code>
+        </pre>
       )}
     </>
   );

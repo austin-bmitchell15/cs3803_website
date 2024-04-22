@@ -14,7 +14,10 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import Input from "./Input";
-import { saveSubmoduleStatus, tableOfContentsInit } from "@/services/ModuleStatusStorage";
+import {
+  saveSubmoduleStatus,
+  tableOfContentsInit,
+} from "@/services/ModuleStatusStorage";
 
 const editorOptions = {
   enableBasicAutocompletion: true,
@@ -36,10 +39,22 @@ interface CodeEditorProps {
   setNumberOfRuns: (value: number | ((prevState: number) => number)) => void;
   moduleId: string;
   expectedOutput: string | undefined;
+  setStdout: (arg: string) => void;
+  setStderr: (arg: string) => void;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-  const { code, packages, data, imageOutput, setNumberOfRuns, moduleId, expectedOutput } = props;
+  const {
+    code,
+    packages,
+    data,
+    imageOutput,
+    setNumberOfRuns,
+    moduleId,
+    expectedOutput,
+    setStdout,
+    setStderr,
+  } = props;
   const [input, setInput] = useState(code.trimEnd());
   const [showOutput, setShowOutput] = useState(false);
 
@@ -83,13 +98,15 @@ export default function CodeEditor(props: CodeEditorProps) {
     setInput(code.trimEnd());
   }
 
-  console.log(expectedOutput && stdout === expectedOutput)
-
   if (expectedOutput && stdout === expectedOutput) {
-    saveSubmoduleStatus(moduleId)
+    saveSubmoduleStatus(moduleId);
+  } else {
+    saveSubmoduleStatus(moduleId);
   }
-  else {
-    saveSubmoduleStatus(moduleId)
+
+  if (imageOutput) {
+    setStdout(stdout);
+    setStderr(stderr);
   }
 
   return (
@@ -130,12 +147,14 @@ export default function CodeEditor(props: CodeEditorProps) {
 
       {isAwaitingInput && <Input prompt={prompt} onSubmit={sendInput} />}
       <div className="pt-4 space-y-2">
-        <h2 className="font-bold">Output:</h2>
         {!imageOutput && showOutput && (
-          <pre className="mt-4 text-left">
-            <code>{stdout}</code>
-            <code className="text-red-500">{stderr}</code>
-          </pre>
+          <>
+            <h2 className="font-bold">Output:</h2>
+            <pre className="mt-4 text-left">
+              <code>{stdout}</code>
+              <code className="text-red-500">{stderr}</code>
+            </pre>
+          </>
         )}
         {!imageOutput && showOutput && stdout == "" && (
           <pre className="mt-4 text-left">
@@ -146,18 +165,6 @@ export default function CodeEditor(props: CodeEditorProps) {
             <code className="text-red-500">{stderr}</code>
           </pre>
         )}
-        {imageOutput &&
-          (!stderr ? (
-            stdout && stdout.startsWith("data:image/png;base64,") ? (
-              <img src={stdout} className="mt-4" />
-            ) : (
-              <h4>No image yet. Click run to see the result.</h4>
-            )
-          ) : (
-            <pre className="mt-4 text-left">
-              <code className="text-red-500">{stderr}</code>
-            </pre>
-          ))}
       </div>
     </div>
   );
