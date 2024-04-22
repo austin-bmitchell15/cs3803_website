@@ -37,8 +37,6 @@ interface CodeEditorProps {
   imageOutput: boolean;
   packages?: Packages;
   setNumberOfRuns: (value: number | ((prevState: number) => number)) => void;
-  moduleId: string;
-  expectedOutput: string | undefined;
   setStdout: (arg: string) => void;
   setStderr: (arg: string) => void;
 }
@@ -50,8 +48,6 @@ export default function CodeEditor(props: CodeEditorProps) {
     data,
     imageOutput,
     setNumberOfRuns,
-    moduleId,
-    expectedOutput,
     setStdout,
     setStderr,
   } = props;
@@ -96,12 +92,6 @@ export default function CodeEditor(props: CodeEditorProps) {
   function reset() {
     setShowOutput(false);
     setInput(code.trimEnd());
-  }
-
-  if (expectedOutput && stdout === expectedOutput) {
-    saveSubmoduleStatus(moduleId);
-  } else {
-    saveSubmoduleStatus(moduleId);
   }
 
   if (imageOutput) {

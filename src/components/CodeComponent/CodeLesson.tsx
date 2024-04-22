@@ -1,6 +1,7 @@
 "use client";
 import CodeComponent from "@/components/CodeComponent/Code";
 import { AAPLData } from "@/data/APPLE";
+import { saveSubmoduleStatus } from "@/services/ModuleStatusStorage";
 import { Snippet } from "@/utils/types";
 import { Button, Card } from "flowbite-react";
 import { useState } from "react";
@@ -19,6 +20,12 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
   const packages = {
     official: ["numpy", "pandas", "matplotlib"],
   };
+
+  if (snippet.expectedOutput && stdout === snippet.expectedOutput) {
+    saveSubmoduleStatus(moduleId);
+  } else if(snippet.imageOutput && numberOfRuns > 0) {
+    saveSubmoduleStatus(moduleId);
+  }
 
   return (
     <div className="flex justify-center h-full">
@@ -56,8 +63,6 @@ export default function CodeLesson({ snippet, moduleId }: CodeLessonProps) {
           data={AAPLData}
           imageOutput={snippet.imageOutput}
           setNumberOfRuns={setNumberOfRuns}
-          moduleId={moduleId}
-          expectedOutput={snippet.expectedOutput}
           setStdout={setStdout}
           setStderr={setStderr}
         />
