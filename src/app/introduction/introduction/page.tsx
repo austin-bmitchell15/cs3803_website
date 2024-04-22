@@ -1,7 +1,7 @@
 import VideoComponent from "@/components/Video";
 
 // const videoUrl: string = "https://www.youtube.com/embed/A0_47vV3iSE?si=3KwIsOEOTx4X00Vd"
-const videoId: string = "A0_47vV3iSE";
+const videoId: string = "AQUEXlgUHxU";
 const description: string = "Introduction to the course";
 const transcript: string = `[Slide 1] Welcome to our course on Data Analysis, Manipulation, and Visualization with Python. This course will dive into the various concepts that are important when working with big data. 
 
@@ -9,19 +9,15 @@ const transcript: string = `[Slide 1] Welcome to our course on Data Analysis, Ma
 
 [Slide 3] This course is for all different types of scientists working with large data. But don’t worry if you don’t fall into the category but are still interested, this is a great course for you. Data analysis has applications in any field such as sports or business.   
 
-[Slide 3] (Outlining of current user experience) This course will assume users have basic knowledge in Linear Algebra and data analysis. Concepts, such as matrix/vector manipulation and graphing, will be used to demonstrate the capabilities of the different Python libraries. 
-
-[Slide 4] The main objective of this course will be to empower scientists to gain a wide range of techniques to use for techniques.  
+[Slide 4] The main objective of this course will be to empower scientists to gain a wide range of techniques to use for data analysis.  
 
 The first objective will be to guide through the idea of installing different packages that need to be installed such as Numpy, Pandas, Matplotlib, and more.  
-
-Then the second objective will be to gain familiarity using Jupyter Notebook, an interactive Python Graphical User-Interface.  
 
 The next object will be to gain familiarity with Numpy (powerful N-dimensional array objects that facilitate efficient data manipulation and storage), Pandas (a tool designed for working tabular data operations for data cleaning, pre-processing and statistical analysis), and Matplotlib (a powerful data visualization tool).  
 
 The last objective will be to have hands-on experience using these tools.   
 
-[Slide 5] (Outlining of current user experience) This course will assume users have basic knowledge in Linear Algebra and data analysis. Concepts, such as matrix/vector manipulation and graphing, will be used to demonstrate the capabilities of the different Python libraries.  `;
+[Slide 5] (Outlining of current user experience) This course will assume users have basic knowledge in Linear Algebra and data analysis. Concepts, such as matrix/vector manipulation and graphing, will be used to demonstrate the capabilities of the different Python libraries.`;
 
 const moduleId: string = "intro";
 
