@@ -41,7 +41,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col w-96">
                 <h3 className="font-semibold text-2xl">
-                  We'll Track Your Progress!
+                  We&apos;ll Track Your Progress!
                 </h3>
                 <p className="mt-2">
                   When you complete a video or an assignment, your progress will

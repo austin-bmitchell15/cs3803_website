@@ -23,7 +23,7 @@ export default function CustomSidebar() {
     }
   }, []);
 
-  if (typeof window !== "undefined") {
+  // if () {
     useEffect(() => {
       window.addEventListener("storage", () => {
         const modules: Module[] | null = loadModuleStatus();
@@ -32,8 +32,8 @@ export default function CustomSidebar() {
           setTableOfContents(modules);
         }
       });
-    }, [window]);
-  }
+    }, [typeof window !== "undefined"]);
+  // }
 
   return (
     <Sidebar className="h-full min-h-full w-auto">
