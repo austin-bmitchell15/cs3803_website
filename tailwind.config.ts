@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-const colors = require("tailwindcss/colors")
+const colors = require("tailwindcss/colors");
 
 const config: Config = {
   content: [
@@ -17,20 +17,18 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        cyan: colors.cyan
-      }
+        cyan: colors.cyan,
+      },
     },
     colors: {
-      'darkpurple': "#1D1B20",
-      'lightpurple': "#D0BCFF",
-      'intermediatepurple': "#4A4458",
-      'graybg': "#727272",
-      'white': "#FFFFFF",
-      'purpletext': "#E8DEF8",
-    }
+      darkpurple: "#1D1B20",
+      lightpurple: "#D0BCFF",
+      intermediatepurple: "#4A4458",
+      graybg: "#727272",
+      white: "#FFFFFF",
+      purpletext: "#E8DEF8",
+    },
   },
-  plugins: [
-    require("flowbite/plugin")
-  ],
+  plugins: [require("flowbite/plugin")],
 };
 export default config;

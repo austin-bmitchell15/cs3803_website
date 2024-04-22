@@ -1,8 +1,8 @@
 import VideoComponent from "@/components/Video";
 
 // const videoUrl: string = "https://www.youtube.com/embed/A0_47vV3iSE?si=3KwIsOEOTx4X00Vd"
-const videoId: string = "Zb--gCMwgfg"
-const description: string = "Guide to installing tools for course"
+const videoId: string = "Zb--gCMwgfg";
+const description: string = "Guide to installing tools for course";
 const transcript: string = `Before we can get started with analyzing data, we’ll need to introduce you to various tools and how to download some of these tools to help you analyze data. 
 
 At the base of all of this is Python. It's a language meant for programmers to be able to communicate with their computers and have their computers perform some tasks for them. In this case, it'll be what helps you analyze your data.  
@@ -30,20 +30,24 @@ Conda and Why Should You Use it
 
 When working with Python and its many libraries, it is important to manage “environments” to work in. Environments are the context that surrounds the code that we are executing. This context determines how the code is run, and what libraries are available for use. Having different environments allows you to work on multiple projects that require different contexts. We recommend that you create a new environment every time you are working on a project that may require a different “context” for the code you will write.  
 
-This is where Conda comes in. Conda will help create and manage these environments for you.  `
+This is where Conda comes in. Conda will help create and manage these environments for you.  `;
 
-const moduleId: string = "intro"
+const moduleId: string = "intro";
 
 export default function Installation() {
-
-    return (
-      <div className="ml-5 mt-5 w-full">
-        <div className="mb-10">
-          <h1 className="text-5xl">Basic Operation Quiz</h1> 
-          </div>
-          <div className="flex justify-center w-full">
-            <VideoComponent videoId={videoId} description={description} transcript={transcript} moduleId={moduleId}/>
-          </div>
+  return (
+    <div className="ml-5 mt-5 w-full">
+      <div className="mb-10">
+        <h1 className="text-5xl">Basic Operation Quiz</h1>
       </div>
-    )
-  }
+      <div className="flex justify-center w-full">
+        <VideoComponent
+          videoId={videoId}
+          description={description}
+          transcript={transcript}
+          moduleId={moduleId}
+        />
+      </div>
+    </div>
+  );
+}
