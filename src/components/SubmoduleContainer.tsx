@@ -43,7 +43,7 @@ export default function SubmoduleContainer(props: { children: any }) {
   }
 
   return (
-    <div className="flex flex-col flex-grow items-center justify-between p-4 border rounded-lg shadow-sm">
+    <div className="flex flex-col flex-grow items-center justify-between p-4 rounded-lg shadow-sm">
       <h2 className="text-xl font-bold mb-4">
         {submoduleTitleList[currentModuleIndex]}
       </h2>
@@ -51,6 +51,7 @@ export default function SubmoduleContainer(props: { children: any }) {
       <div className="flex justify-between w-full mt-4">
         <Button
           color="gray"
+          className="px-4"
           onClick={() => routerPush(currentModuleIndex - 1)}
           disabled={currentModuleIndex - 1 < 0}
         >
@@ -58,6 +59,7 @@ export default function SubmoduleContainer(props: { children: any }) {
         </Button>
         <Button
           color="gray"
+          className="px-4"
           onClick={() => routerPush(currentModuleIndex + 1)}
           disabled={currentModuleIndex + 1 >= submodulePathOrdering.length}
         >
