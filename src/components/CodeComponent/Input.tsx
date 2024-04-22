@@ -11,7 +11,7 @@ export default function Input(props: InputProps) {
   const { prompt, onSubmit } = props;
   const [input, setInput] = useState("");
 
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (inputRef.current) {
