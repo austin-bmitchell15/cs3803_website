@@ -105,7 +105,10 @@ export default function CodeEditor(props: CodeEditorProps) {
     setStderr(stderr);
   }
 
-  if (expectedOutput && stdout === expectedOutput) {
+  let tempStdout = stdout.replace("\s", "")
+  let tempExpectedOutput = expectedOutput?.replace("\s", "")
+  if (expectedOutput && tempStdout === tempExpectedOutput) {
+    
     saveSubmoduleStatus(moduleId);
   } else if (imageOutput && numberOfRuns > 0) {
     saveSubmoduleStatus(moduleId);
